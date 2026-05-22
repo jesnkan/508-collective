@@ -33,7 +33,7 @@ export default function DSTVRetail() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="uppercase tracking-[0.3em] text-xs font-semibold mb-6 text-foreground/50"
+            className="uppercase tracking-[0.3em] text-[10px] md:text-xs font-semibold mb-6 text-foreground/50"
           >
             A 508 Venture
           </motion.p>
@@ -41,7 +41,7 @@ export default function DSTVRetail() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="text-6xl md:text-8xl lg:text-[120px] font-heading font-medium tracking-tighter leading-none mb-8"
+            className="text-5xl md:text-8xl lg:text-[120px] font-heading font-medium tracking-tighter leading-none mb-8"
           >
             DSTV <span className="italic" style={{ color: brandColor, textShadow: `0 0 80px ${brandColor}` }}>Retail</span>
           </motion.h1>
@@ -49,31 +49,31 @@ export default function DSTVRetail() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.8 }}
-            className="text-xl md:text-2xl font-light text-foreground/70 max-w-2xl mx-auto"
+            className="text-lg md:text-2xl font-light text-foreground/70 max-w-2xl mx-auto"
           >
             Entertainment delivered. The ultimate destination for premium electronics and subscriptions.
           </motion.p>
         </div>
       </section>
 
-      <section className="py-32 px-6 md:px-12 max-w-[1600px] mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+      <section className="py-20 md:py-32 px-6 md:px-12 max-w-[1600px] mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
           <div>
-            <h2 className="text-sm font-semibold uppercase tracking-[0.3em] mb-6 text-foreground/50">The Mission</h2>
-            <p className="text-4xl md:text-5xl font-heading font-medium tracking-tight leading-tight">
+            <h2 className="text-[10px] md:text-sm font-semibold uppercase tracking-[0.3em] mb-6 text-foreground/50">The Mission</h2>
+            <p className="text-3xl md:text-5xl font-heading font-medium tracking-tight leading-tight">
               Bridging the gap between world-class content and the <span style={{ color: brandColor }}>devices that bring it to life</span>.
             </p>
           </div>
           <div className="relative">
              <div className="absolute -inset-4 bg-[#FFD60A]/10 blur-[80px] rounded-full"></div>
-             <div className="glass-card p-12 rounded-[40px] relative border border-[#FFD60A]/20 bg-foreground/5 backdrop-blur-xl">
-               <h3 className="text-2xl font-heading font-medium mb-6">Retail Experience</h3>
-               <p className="text-foreground/60 font-light leading-relaxed mb-8">
+             <div className="glass-card p-8 md:p-12 rounded-[30px] md:rounded-[40px] relative border border-[#FFD60A]/20 bg-foreground/5 backdrop-blur-xl">
+               <h3 className="text-xl md:text-2xl font-heading font-medium mb-6">Retail Experience</h3>
+               <p className="text-foreground/60 font-light leading-relaxed mb-8 text-sm md:text-base">
                  We provide end-to-end retail solutions for digital entertainment, hardware, and subscription services, creating immersive in-store and online experiences.
                </p>
                <ul className="space-y-4">
                  {['Smart TVs & Audio', 'Decoders & Installation', 'Smart Home Integration', 'Premium Subscriptions'].map(item => (
-                   <li key={item} className="flex items-center gap-4 text-sm font-medium tracking-wide">
+                   <li key={item} className="flex items-center gap-4 text-xs md:text-sm font-medium tracking-wide">
                      <div className="w-2 h-2 rounded-full" style={{ backgroundColor: brandColor }}></div>
                      {item}
                    </li>
@@ -84,11 +84,11 @@ export default function DSTVRetail() {
         </div>
       </section>
 
-      <section className="py-32 px-6 text-center border-t border-foreground/10">
-        <h2 className="text-4xl md:text-6xl font-heading tracking-tight mb-12">Upgrade your entertainment.</h2>
+      <section className="py-20 md:py-32 px-6 text-center border-t border-foreground/10">
+        <h2 className="text-3xl md:text-6xl font-heading tracking-tight mb-8 md:mb-12">Upgrade your entertainment.</h2>
         <Link 
           to="/#contact"
-          className="inline-block px-10 py-5 rounded-full text-black font-semibold uppercase tracking-wider text-sm hover:scale-105 transition-transform duration-300 shadow-[0_10px_40px_rgba(255,214,10,0.3)]"
+          className="inline-block px-8 py-4 md:px-10 md:py-5 rounded-full text-black font-semibold uppercase tracking-wider text-xs md:text-sm hover:scale-105 transition-transform duration-300 shadow-[0_10px_40px_rgba(255,214,10,0.3)] w-full md:w-auto"
           style={{ backgroundColor: brandColor }}
         >
           Find a Store

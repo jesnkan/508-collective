@@ -14,7 +14,7 @@ export default function Hero() {
   const indicatorOpacity = useTransform(scrollY, [0, 50], [1, 0]);
 
   return (
-    <section ref={containerRef} className="relative h-[100dvh] min-h-[800px] w-full flex flex-col overflow-hidden bg-background">
+    <section ref={containerRef} className="relative h-[100dvh] min-h-[700px] md:min-h-[800px] w-full flex flex-col overflow-hidden bg-background">
       {/* Immersive Background */}
       <motion.div style={{ y, opacity }} className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-background"></div>
@@ -69,14 +69,14 @@ export default function Hero() {
 
       <div className="relative z-10 w-full h-full max-w-[1600px] mx-auto px-6 md:px-16 pt-32 pb-12 flex flex-col justify-between">
         
-        <div className="flex-1 w-full relative flex flex-col md:flex-row items-center justify-end lg:pr-10">
+        <div className="flex-1 w-full relative flex flex-col md:flex-row items-center justify-center md:justify-end lg:pr-10">
           
           {/* Top-Left Small Text Overlay */}
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="absolute top-[10%] left-6 md:left-24 max-w-[200px] text-foreground/60 text-[10px] md:text-xs leading-relaxed hidden lg:block z-20"
+            className="absolute top-[5%] md:top-[10%] left-6 md:left-24 max-w-[200px] text-foreground/60 text-[10px] md:text-xs leading-relaxed hidden lg:block z-20"
           >
             Building sustainable futures,<br/>
             shaping industries, and<br/>
@@ -88,9 +88,9 @@ export default function Hero() {
              initial={{ opacity: 0, scale: 0.8, x: -50 }}
              animate={{ opacity: 1, scale: 1, x: 0 }}
              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-             className="absolute left-[-20%] md:left-[-10%] lg:left-[-5%] top-1/2 -translate-y-1/2 pointer-events-none z-0 font-heading font-black tracking-tighter"
+             className="absolute left-[-10%] md:left-[-10%] lg:left-[-5%] top-[40%] md:top-1/2 -translate-y-1/2 pointer-events-none z-0 font-heading font-black tracking-tighter"
           >
-             <h1 className="text-[65vw] md:text-[55vw] lg:text-[450px] leading-[0.8] text-transparent bg-clip-text bg-gradient-to-br from-[#0096FF] via-[#FF1A1A] to-[#FFD60A] drop-shadow-2xl whitespace-nowrap overflow-visible">
+             <h1 className="text-[50vw] md:text-[55vw] lg:text-[450px] leading-[0.8] text-transparent bg-clip-text bg-gradient-to-br from-[#0096FF] via-[#FF1A1A] to-[#FFD60A] drop-shadow-2xl whitespace-nowrap overflow-visible">
                508
              </h1>
           </motion.div>
@@ -100,28 +100,29 @@ export default function Hero() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="w-full md:w-[55%] lg:w-[45%] xl:w-[40%] flex flex-col items-start relative z-20 mt-48 md:mt-0 ml-auto md:mr-[-10%] lg:mr-[-5%] p-6 md:p-0 rounded-3xl"
+            className="w-full md:w-[55%] lg:w-[45%] xl:w-[40%] flex flex-col items-start relative z-20 mt-32 md:mt-0 ml-auto md:mr-[-10%] lg:mr-[-5%] p-4 md:p-0 rounded-3xl"
           >
             <div className="flex items-center gap-3 px-4 py-2 rounded-full border border-foreground/10 bg-foreground/5 backdrop-blur-md mb-6">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
               <span className="text-foreground/80 text-[10px] font-semibold uppercase tracking-[0.2em] pt-[1px]">
                 The 508 Collective
               </span>
             </div>
 
-            <h2 className="text-[9vw] md:text-[4vw] lg:text-[60px] leading-[1.0] font-heading font-bold tracking-tight text-foreground uppercase mb-6 drop-shadow-lg">
+            <h2 className="text-[11vw] md:text-[4vw] lg:text-[60px] leading-[1.0] font-heading font-bold tracking-tight text-foreground uppercase mb-6 drop-shadow-lg">
               Multiple Businesses.<br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0096FF] via-[#FF1A1A] to-[#FFD60A]">One Bold Vision.</span>
             </h2>
 
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mt-4">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mt-4 w-full sm:w-auto">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                className="w-full sm:w-auto"
               >
                 <Link
                   to="/portfolio"
-                  className="bg-foreground text-background px-8 py-4 rounded-full font-bold uppercase tracking-[0.1em] text-xs flex items-center gap-4 transition-colors hover:bg-foreground/90 shadow-xl group"
+                  className="bg-foreground text-background px-8 py-4 rounded-full font-bold uppercase tracking-[0.1em] text-xs flex items-center justify-center gap-4 transition-colors hover:bg-foreground/90 shadow-xl group"
                 >
                   Explore Ecosystem 
                   <div className="w-6 h-6 bg-background/20 rounded-full flex items-center justify-center transition-transform group-hover:translate-x-1">
@@ -133,7 +134,7 @@ export default function Hero() {
                 </Link>
               </motion.div>
 
-              <div className="flex items-center gap-3 border-l border-foreground/20 pl-6 h-10">
+              <div className="flex items-center gap-3 border-l border-foreground/20 pl-6 h-10 hidden sm:flex">
                  <div className="flex text-yellow-400">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
                  </div>
@@ -143,26 +144,24 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Floating Cards (Bottom Left and Right) */}
-        <div className="absolute inset-x-0 bottom-12 lg:bottom-24 px-6 md:px-16 pointer-events-none flex justify-between items-end w-full max-w-[1600px] mx-auto z-20">
+        {/* Floating Cards (Bottom Left) */}
+        <div className="absolute inset-x-0 bottom-8 md:bottom-12 lg:bottom-24 px-6 md:px-16 pointer-events-none flex justify-between items-end w-full max-w-[1600px] mx-auto z-20">
            
            {/* Bottom Left Card */}
            <motion.div 
              initial={{ opacity: 0, y: 30 }}
              animate={{ opacity: 1, y: 0 }}
              transition={{ duration: 0.8, delay: 0.6 }}
-             className="bg-card text-card-foreground border border-border rounded-2xl p-4 md:p-6 flex flex-col gap-2 shadow-2xl backdrop-blur-md pointer-events-auto"
+             className="bg-card/80 text-card-foreground border border-border rounded-2xl p-4 md:p-6 flex flex-col gap-1 md:gap-2 shadow-2xl backdrop-blur-xl pointer-events-auto"
            >
-             <div className="flex items-center -space-x-2 mb-2">
-               <div className="w-8 h-8 rounded-full bg-[#0096FF] border-2 border-card z-30"></div>
-               <div className="w-8 h-8 rounded-full bg-[#FF1A1A] border-2 border-card z-20"></div>
-               <div className="w-8 h-8 rounded-full bg-[#FFD60A] border-2 border-card z-10"></div>
+             <div className="flex items-center -space-x-2 mb-1 md:mb-2">
+               <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-[#0096FF] border-2 border-card z-30"></div>
+               <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-[#FF1A1A] border-2 border-card z-20"></div>
+               <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-[#FFD60A] border-2 border-card z-10"></div>
              </div>
-             <div className="text-2xl font-bold font-heading">12M+</div>
-             <div className="opacity-60 text-[10px] uppercase tracking-wider">Satisfied Customers</div>
+             <div className="text-xl md:text-2xl font-bold font-heading">12M+</div>
+             <div className="opacity-60 text-[8px] md:text-[10px] uppercase tracking-wider">Satisfied Customers</div>
            </motion.div>
-
-           {/* Bottom Right Card Removed */}
 
         </div>
 
@@ -171,4 +170,3 @@ export default function Hero() {
     </section>
   );
 }
-

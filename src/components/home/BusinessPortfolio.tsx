@@ -57,19 +57,19 @@ function Card({ business, index }: { business: typeof BUSINESSES[0], index: numb
     offset: ['start end', 'end start']
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ['20%', '-20%']);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8]);
+  const y = useTransform(scrollYProgress, [0, 1], ['15%', '-15%']);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
 
   return (
     <motion.div 
       ref={cardRef}
       style={{ scale }}
-      className={`relative w-full min-h-[80vh] rounded-[40px] overflow-hidden group mb-12 lg:mb-24 sticky top-12 shadow-[0_0_80px_rgba(0,0,0,0.5)] border border-foreground/10 ${index % 2 === 0 ? 'lg:w-[80%]' : 'lg:w-[80%] lg:ml-auto'}`}
+      className={`relative w-full min-h-[50vh] md:min-h-[80vh] rounded-[24px] md:rounded-[40px] overflow-hidden group mb-8 md:mb-24 md:sticky md:top-24 shadow-[0_0_80px_rgba(0,0,0,0.5)] border border-foreground/10 ${index % 2 === 0 ? 'lg:w-[85%]' : 'lg:w-[85%] lg:ml-auto'}`}
     >
       <Link to={business.path} className="absolute inset-0 block z-0">
         {/* Background Image with Parallax */}
-        <motion.div style={{ y }} className="absolute inset-[-20%] w-[140%] h-[140%] bg-black">
-          <div className="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition-colors duration-700 z-10"></div>
+        <motion.div style={{ y }} className="absolute inset-[-10%] w-[120%] h-[120%] bg-black">
+          <div className="absolute inset-0 bg-black/60 md:bg-black/50 group-hover:bg-black/20 transition-colors duration-700 z-10"></div>
           <img src={business.image} alt={business.name} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-1000" />
         </motion.div>
 
@@ -79,16 +79,16 @@ function Card({ business, index }: { business: typeof BUSINESSES[0], index: numb
           style={{ background: `linear-gradient(to bottom right, ${business.color}, transparent)` }}
         ></div>
 
-        <div className="absolute inset-0 z-30 p-12 lg:p-24 flex flex-col justify-between">
+        <div className="absolute inset-0 z-30 p-8 md:p-24 flex flex-col justify-between">
           <div className="flex justify-between items-start">
-            <span className="text-white font-mono text-sm tracking-widest border border-white/20 rounded-full px-4 py-1 bg-black/40 backdrop-blur-md">
+            <span className="text-white font-mono text-[10px] md:text-sm tracking-widest border border-white/20 rounded-full px-3 py-1 bg-black/40 backdrop-blur-md">
               0{index + 1}
             </span>
             <div 
-              className="w-16 h-16 rounded-full border border-white/30 flex items-center justify-center backdrop-blur-md -rotate-45 group-hover:rotate-0 transition-transform duration-500 overflow-hidden"
+              className="w-10 h-10 md:w-16 md:h-16 rounded-full border border-white/30 flex items-center justify-center backdrop-blur-md -rotate-45 group-hover:rotate-0 transition-transform duration-500 overflow-hidden"
               style={{ backgroundColor: `${business.color}20` }}
             >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white md:w-6 md:h-6">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
@@ -96,10 +96,10 @@ function Card({ business, index }: { business: typeof BUSINESSES[0], index: numb
           </div>
 
           <div>
-            <h3 className="text-5xl lg:text-7xl font-heading font-medium tracking-tighter text-white mb-4 translate-y-8 group-hover:translate-y-0 transition-transform duration-500 hover:text-white">
+            <h3 className="text-3xl md:text-7xl font-heading font-medium tracking-tighter text-white mb-2 md:mb-4 translate-y-4 md:translate-y-8 group-hover:translate-y-0 transition-transform duration-500 hover:text-white">
               {business.name}
             </h3>
-            <p className="text-xl lg:text-3xl font-sans text-white/90 font-light opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-700 delay-100">
+            <p className="text-lg md:text-3xl font-sans text-white/90 font-light opacity-100 md:opacity-0 group-hover:opacity-100 translate-y-0 md:translate-y-4 group-hover:translate-y-0 transition-all duration-700 delay-100">
               {business.tagline}
             </p>
           </div>
@@ -111,12 +111,12 @@ function Card({ business, index }: { business: typeof BUSINESSES[0], index: numb
 
 export default function BusinessPortfolio() {
   return (
-    <section id="portfolio" className="py-32 bg-background relative z-20">
+    <section id="portfolio" className="py-20 md:py-32 bg-background relative z-20">
       <div className="max-w-[1600px] mx-auto px-6 md:px-12">
-        <div className="mb-24">
-          <h2 className="text-sm font-semibold uppercase tracking-[0.3em] text-foreground/50 mb-4">Our Ecosystem</h2>
-          <p className="font-heading text-5xl md:text-7xl text-foreground font-medium tracking-tighter">
-            Five Pillars. <span className="text-foreground/30">Infinite Growth.</span>
+        <div className="mb-16 md:mb-24">
+          <h2 className="text-[10px] md:text-sm font-semibold uppercase tracking-[0.3em] text-foreground/50 mb-4">Our Ecosystem</h2>
+          <p className="font-heading text-4xl md:text-7xl text-foreground font-medium tracking-tighter leading-tight">
+            Five Pillars. <br className="md:hidden" /> <span className="text-foreground/30">Infinite Growth.</span>
           </p>
         </div>
 

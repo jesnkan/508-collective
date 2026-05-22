@@ -40,26 +40,25 @@ export default function Depot() {
     : products.filter(p => p.category === activeTab);
 
   return (
-    <div className="bg-background text-foreground min-h-screen font-sans selection:bg-[#0096FF]/30 pt-32">
+    <div className="bg-background text-foreground min-h-screen font-sans selection:bg-[#0096FF]/30 pt-24 md:pt-32">
       {/* Header */}
-      <section className="px-6 md:px-12 max-w-[1600px] mx-auto mb-12">
-        <div className="border-b border-foreground/10 pb-8 flex justify-between items-end">
+      <section className="px-6 md:px-12 max-w-[1600px] mx-auto mb-8 md:mb-12">
+        <div className="border-b border-foreground/10 pb-6 md:pb-8 flex justify-between items-end">
           <div>
-            <p className="uppercase tracking-[0.2em] font-mono text-xs font-semibold mb-2 text-[#0096FF]">508 / Commerce</p>
-            <h1 className="text-5xl md:text-7xl font-heading font-bold uppercase tracking-tighter block">
+            <p className="uppercase tracking-[0.2em] font-mono text-[10px] md:text-xs font-semibold mb-2 text-[#0096FF]">508 / Commerce</p>
+            <h1 className="text-4xl md:text-7xl font-heading font-bold uppercase tracking-tighter block leading-none">
               Depot <span className="opacity-50">Store</span>
             </h1>
           </div>
-          <div className="hidden md:flex gap-6 items-center">
-             <div className="flex gap-6 font-mono text-sm uppercase tracking-wide mr-8">
+          <div className="flex gap-4 md:gap-6 items-center">
+             <div className="hidden md:flex gap-6 font-mono text-sm uppercase tracking-wide mr-8">
                <button className="text-foreground hover:text-[#0096FF] transition-colors pb-1">Shop All</button>
                <button className="text-foreground/50 hover:text-foreground transition-colors pb-1">New Arrivals</button>
-               <button className="text-foreground/50 hover:text-foreground transition-colors pb-1">Support</button>
              </div>
              
              {/* Cart Button */}
-             <button className="relative flex items-center justify-center w-12 h-12 rounded-full border border-foreground/20 hover:border-[#0096FF] transition-all group overflow-visible">
-               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="group-hover:text-[#0096FF] transition-colors">
+             <button className="relative flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full border border-foreground/20 hover:border-[#0096FF] transition-all group overflow-visible">
+               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="group-hover:text-[#0096FF] transition-colors md:w-5 md:h-5">
                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
                  <line x1="3" y1="6" x2="21" y2="6"></line>
                  <path d="M16 10a4 4 0 0 1-8 0"></path>
@@ -69,7 +68,7 @@ export default function Depot() {
                    <motion.div 
                      initial={{ scale: 0, opacity: 0 }}
                      animate={{ scale: 1, opacity: 1 }}
-                     className="absolute -top-1 -right-1 w-5 h-5 bg-[#0096FF] text-white text-[10px] font-bold rounded-full flex items-center justify-center shadow-lg"
+                     className="absolute -top-1 -right-1 w-4 h-4 md:w-5 md:h-5 bg-[#0096FF] text-white text-[8px] md:text-[10px] font-bold rounded-full flex items-center justify-center shadow-lg"
                    >
                      {cartCount}
                    </motion.div>
@@ -79,6 +78,19 @@ export default function Depot() {
           </div>
         </div>
       </section>
+
+      {/* Mobile Category Switcher */}
+      <div className="lg:hidden px-6 mb-8 flex gap-4 overflow-x-auto pb-4 no-scrollbar">
+        {categories.map(cat => (
+          <button 
+            key={cat}
+            onClick={() => setActiveTab(cat)}
+            className={`whitespace-nowrap px-4 py-2 rounded-full border text-[10px] font-mono uppercase tracking-widest transition-all ${activeTab === cat ? 'bg-foreground text-background border-foreground' : 'border-foreground/20 text-foreground/60'}`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
 
       {/* Main Store Layout */}
       <section className="px-6 md:px-12 max-w-[1600px] mx-auto flex flex-col lg:flex-row gap-12">
@@ -104,11 +116,11 @@ export default function Depot() {
 
         {/* Product Grid */}
         <div className="flex-1">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 font-mono text-xs uppercase tracking-widest border-b border-foreground/10 pb-4 gap-4">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 font-mono text-[10px] md:text-xs uppercase tracking-widest border-b border-foreground/10 pb-4 gap-4">
              <div className="flex items-center gap-4 text-foreground/50">
                <span>{filteredProducts.length} Products found</span>
                {activeTab !== 'All Products' && (
-                 <span className="px-2 py-1 bg-foreground/5 rounded text-[10px]">
+                 <span className="px-2 py-1 bg-foreground/5 rounded text-[8px] md:text-[10px]">
                    {activeTab}
                  </span>
                )}
@@ -119,7 +131,7 @@ export default function Depot() {
              </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 md:gap-12">
             <AnimatePresence mode="popLayout">
               {filteredProducts.map((product, idx) => (
                 <motion.div 
@@ -131,10 +143,10 @@ export default function Depot() {
                   transition={{ duration: 0.4, delay: idx * 0.05 }}
                   className="group"
                 >
-                  <div className="relative aspect-[4/5] bg-foreground/5 mb-4 overflow-hidden rounded-md cursor-pointer">
+                  <div className="relative aspect-[4/5] bg-foreground/5 mb-4 overflow-hidden rounded-xl cursor-pointer">
                     {/* Tags */}
                     {product.tag && (
-                      <div className="absolute top-4 left-4 z-10 font-mono text-[10px] uppercase bg-background/80 backdrop-blur-md px-3 py-1 font-semibold tracking-wider border border-foreground/10 rounded-full">
+                      <div className="absolute top-4 left-4 z-10 font-mono text-[8px] md:text-[10px] uppercase bg-background/80 backdrop-blur-md px-3 py-1 font-semibold tracking-wider border border-foreground/10 rounded-full">
                         {product.tag}
                       </div>
                     )}
@@ -150,7 +162,7 @@ export default function Depot() {
                     <div className="absolute inset-0 bg-background/20 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
                        <button 
                          onClick={() => setCartCount(c => c + 1)}
-                         className="pointer-events-auto bg-foreground text-background px-6 py-3 rounded-full font-mono text-xs uppercase tracking-widest font-bold translate-y-4 group-hover:translate-y-0 transition-all hover:bg-[#0096FF] hover:scale-105"
+                         className="pointer-events-auto bg-foreground text-background px-6 py-3 rounded-full font-mono text-[10px] md:text-xs uppercase tracking-widest font-bold translate-y-4 group-hover:translate-y-0 transition-all hover:bg-[#0096FF] hover:scale-105"
                        >
                          Add to Cart
                        </button>
@@ -158,10 +170,10 @@ export default function Depot() {
                   </div>
 
                   <div className="px-1">
-                    <p className="font-mono text-[10px] uppercase text-foreground/50 tracking-widest mb-1.5">{product.category}</p>
+                    <p className="font-mono text-[8px] md:text-[10px] uppercase text-foreground/50 tracking-widest mb-1.5">{product.category}</p>
                     <div className="flex flex-col gap-2 border-t border-foreground/10 pt-4 mt-2">
-                       <h3 className="font-heading font-medium text-xl leading-tight group-hover:text-[#0096FF] transition-colors">{product.name}</h3>
-                       <p className="font-sans text-sm text-foreground/70 leading-relaxed font-light">{product.description}</p>
+                       <h3 className="font-heading font-medium text-lg md:text-xl leading-tight group-hover:text-[#0096FF] transition-colors">{product.name}</h3>
+                       <p className="font-sans text-xs md:text-sm text-foreground/70 leading-relaxed font-light">{product.description}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -170,7 +182,7 @@ export default function Depot() {
             
             {filteredProducts.length === 0 && (
                <div className="col-span-full min-h-[40vh] flex flex-col items-center justify-center border border-dashed border-foreground/20 rounded-xl bg-foreground/[0.02]">
-                  <p className="font-mono text-sm uppercase tracking-widest text-foreground/50">No products found in this category.</p>
+                  <p className="font-mono text-xs md:text-sm uppercase tracking-widest text-foreground/50">No products found.</p>
                </div>
             )}
           </div>
@@ -178,17 +190,17 @@ export default function Depot() {
       </section>
 
       {/* Newsletter / CTA */}
-      <section className="py-24 px-6 md:px-12 mt-32 border-t border-foreground/10 bg-foreground/[0.02]">
+      <section className="py-20 md:py-32 px-6 md:px-12 mt-20 md:mt-32 border-t border-foreground/10 bg-foreground/[0.02]">
          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="font-heading text-3xl font-bold uppercase tracking-tighter mb-4">Stay Perfectly Stocked.</h2>
-            <p className="text-foreground/60 mb-8 font-sans">Subscribe to get notified when new products go live in the Depot store.</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <h2 className="font-heading text-2xl md:text-3xl font-bold uppercase tracking-tighter mb-4">Stay Perfectly Stocked.</h2>
+            <p className="text-foreground/60 mb-8 font-sans text-sm md:text-base">Subscribe to get notified when new products go live in the Depot store.</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                <input 
                  type="email" 
                  placeholder="Enter your email address..." 
-                 className="px-6 py-4 bg-background border border-foreground/20 font-sans focus:outline-none focus:border-[#0096FF] w-full sm:w-96 rounded-full"
+                 className="px-6 py-3 md:py-4 bg-background border border-foreground/20 font-sans focus:outline-none focus:border-[#0096FF] w-full sm:w-96 rounded-full text-sm"
                />
-               <button className="px-8 py-4 bg-foreground text-background font-mono text-xs uppercase tracking-widest hover:bg-[#0096FF] transition-colors whitespace-nowrap rounded-full">
+               <button className="px-8 py-3 md:py-4 bg-foreground text-background font-mono text-[10px] md:text-xs uppercase tracking-widest hover:bg-[#0096FF] transition-colors whitespace-nowrap rounded-full w-full sm:w-auto font-bold">
                  Subscribe
                </button>
             </div>

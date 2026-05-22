@@ -35,13 +35,13 @@ export default function Stats() {
   ];
 
   return (
-    <section className="bg-foreground text-background py-32 rounded-t-[60px] -mt-[60px] relative z-30 overflow-hidden">
+    <section className="bg-foreground text-background py-20 md:py-32 rounded-t-[40px] md:rounded-t-[60px] -mt-[40px] md:-mt-[60px] relative z-30 overflow-hidden">
       {/* Decorative Gradients */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]"></div>
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[100px]"></div>
+      <div className="absolute top-0 right-0 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-primary/5 rounded-full blur-[100px]"></div>
+      <div className="absolute bottom-0 left-0 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-accent/5 rounded-full blur-[100px]"></div>
 
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 divide-y md:divide-y-0 md:divide-x divide-black/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 lg:gap-8 divide-y md:divide-y-0 md:divide-x divide-background/10">
           {stats.map((stat, i) => (
             <motion.div 
               key={i}
@@ -51,10 +51,10 @@ export default function Stats() {
               transition={{ duration: 0.8, delay: i * 0.1 }}
               className="pt-8 md:pt-0 md:px-8 first:pl-0 flex flex-col justify-center"
             >
-              <div className="text-6xl md:text-8xl font-heading font-medium tracking-tighter mb-4 text-background flex">
+              <div className="text-5xl md:text-8xl font-heading font-medium tracking-tighter mb-2 md:mb-4 text-background flex">
                 <Counter from={0} to={stat.value} suffix={stat.suffix} />
               </div>
-              <p className="text-sm font-semibold uppercase tracking-widest text-background/50">
+              <p className="text-[10px] md:text-sm font-semibold uppercase tracking-widest text-background/50">
                 {stat.label}
               </p>
             </motion.div>
