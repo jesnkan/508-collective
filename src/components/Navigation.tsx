@@ -6,20 +6,14 @@ import { useEffect, useState } from 'react';
 
 export default function Navigation() {
   const { scrollY } = useScroll();
-  const backgroundColor = useTransform(
-    scrollY,
-    [0, 100],
-    ['rgba(5, 5, 5, 0)', 'rgba(5, 5, 5, 0)']
-  );
-  const backdropFilter = useTransform(
-    scrollY,
-    [0, 100],
-    ['blur(0px)', 'blur(0px)']
-  );
-
-  const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Subtle scroll animation for the header
+  const headerY = useTransform(scrollY, [0, 50], [24, 12]);
+  const scale = useTransform(scrollY, [0, 50], [1, 0.98]);
+
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
@@ -35,90 +29,93 @@ export default function Navigation() {
 
   return (
     <>
-      <motion.header
-        style={{ backgroundColor, backdropFilter }}
-        className="fixed top-0 left-0 right-0 z-50 mix-blend-difference"
-      >
-        <div className="max-w-[1600px] mx-auto px-6 md:px-12 h-20 md:h-24 flex items-center justify-between">
-          <Link to="/" className="font-heading text-2xl md:text-3xl font-black tracking-tight text-gradient hover:opacity-70 transition-opacity">
+      <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none">
+        <motion.header
+          style={{ 
+            y: headerY,
+            scale,
+          }}
+          className="pointer-events-auto flex items-center bg-background/70 backdrop-blur-2xl border border-foreground/10 rounded-full shadow-2xl px-4 md:px-8 py-2 w-fit max-w-[95vw] gap-8 md:gap-24"
+        >
+          {/* Logo Section - Significantly Pushed Left */}
+          <Link 
+            to="/" 
+            className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-foreground text-background font-heading font-black text-sm md:text-base hover:scale-110 transition-transform shrink-0"
+          >
             508
           </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8 lg:gap-12">
+          {/* Desktop Nav - Centered with large breathing room */}
+          <nav className="hidden md:flex items-center gap-4">
             {navLinks.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
-                className="text-[10px] sm:text-xs font-bold text-white uppercase tracking-[0.2em] hover:text-white/70 transition-colors relative"
+                className="text-[10px] font-bold text-foreground/50 uppercase tracking-[0.2em] px-4 py-2 rounded-full hover:text-foreground hover:bg-foreground/5 transition-all"
               >
                 {item.name}
               </Link>
             ))}
           </nav>
 
-          {/* Right side area */}
-          <div className="flex items-center gap-4 md:gap-6">
-            {/* Theme Toggle */}
+          {/* Right Actions - Significantly Pushed Right */}
+          <div className="flex items-center gap-2">
             {mounted && (
               <button
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="text-white dark:hover:text-white/70 hover:text-white/70 transition-colors flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 bg-white/5 backdrop-blur-md"
+                className="text-foreground/60 hover:text-foreground flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full hover:bg-foreground/5 transition-colors"
                 aria-label="Toggle theme"
               >
-                {theme === 'dark' ? <Sun size={14} className="md:w-4 md:h-4" /> : <Moon size={14} className="md:w-4 md:h-4" />}
+                {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
               </button>
             )}
 
             {/* Mobile Menu Toggle */}
             <button 
-              className="md:hidden text-white p-2"
+              className="md:hidden flex items-center justify-center w-10 h-10 rounded-full hover:bg-foreground/5 text-foreground transition-colors"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
-        </div>
-      </motion.header>
+        </motion.header>
+      </div>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-40 bg-background md:hidden flex flex-col pt-32 px-12"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-40 bg-background/95 backdrop-blur-xl md:hidden flex flex-col items-center justify-center"
           >
-            <nav className="flex flex-col gap-8">
+             <button 
+              className="absolute top-8 right-8 text-foreground/50 hover:text-foreground p-4"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <X size={32} />
+            </button>
+
+            <nav className="flex flex-col gap-6 text-center">
               {navLinks.map((item, i) => (
                 <motion.div
                   key={item.name}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
+                  transition={{ delay: i * 0.05 }}
                 >
                   <Link
                     to={item.path}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="text-4xl font-heading font-bold tracking-tighter text-foreground hover:text-primary transition-colors"
+                    className="text-3xl font-heading font-bold tracking-tight text-foreground"
                   >
                     {item.name}
                   </Link>
                 </motion.div>
               ))}
             </nav>
-
-            <div className="mt-auto pb-12">
-               <p className="text-xs uppercase tracking-[0.3em] text-foreground/40 font-semibold mb-6">Connect With Us</p>
-               <div className="flex gap-4">
-                  {['IG', 'X', 'LI'].map((social) => (
-                    <a key={social} href="#" className="w-10 h-10 rounded-full border border-foreground/10 flex items-center justify-center text-xs font-bold">{social}</a>
-                  ))}
-               </div>
-            </div>
           </motion.div>
         )}
       </AnimatePresence>
