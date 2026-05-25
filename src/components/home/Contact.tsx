@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 export default function Contact() {
   return (
     <section id="contact" className="bg-background text-foreground py-20 md:py-32 rounded-t-[40px] md:rounded-t-[60px] relative z-40 overflow-hidden mt-[-40px] md:mt-[-60px]">
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-multiply dark:mix-blend-overlay pointer-events-none"></div>
       
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24">

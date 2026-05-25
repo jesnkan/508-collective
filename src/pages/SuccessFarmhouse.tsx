@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 
 import { Link } from 'react-router-dom';
+import SEO from '@/components/SEO';
 
 export default function SuccessFarmhouse() {
   const ref = useRef(null);
@@ -15,6 +16,11 @@ export default function SuccessFarmhouse() {
 
   return (
     <div className="bg-background text-foreground min-h-screen font-sans">
+      <SEO 
+        title="Success Farmhouse | Sustainable Agribusiness & Innovation"
+        description="Cultivating the future at Success Farmhouse. Modern approach to agribusiness, sustainable farming practices, and high-quality organic produce."
+        keywords="Success Farmhouse, sustainable agriculture, organic farming, agribusiness, agricultural innovation, farming technology, organic produce"
+      />
       <section ref={ref} className="relative h-[70vh] md:h-[85vh] flex items-center justify-center overflow-hidden rounded-b-[40px] md:rounded-b-[60px] shadow-sm">
         <motion.div style={{ y }} className="absolute inset-0 z-0">
           <img 
@@ -41,7 +47,7 @@ export default function SuccessFarmhouse() {
             transition={{ duration: 1, delay: 0.2 }}
             className="text-4xl md:text-8xl font-heading font-medium tracking-tight leading-none mb-6 text-foreground drop-shadow-lg"
           >
-            Success <br/><span className="dark:text-foreground text-background/90">Farmhouse</span>
+            Success <br/><span className="dark:text-foreground text-foreground/90 md:text-background/90">Farmhouse</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0 }}
@@ -68,7 +74,7 @@ export default function SuccessFarmhouse() {
          </div>
          <div className="relative h-[350px] md:h-[500px] rounded-[30px] md:rounded-[40px] overflow-hidden shadow-2xl">
             <img src="https://images.unsplash.com/photo-1592982537447-66a90802c673?auto=format&fit=crop&q=80&w=1000" className="w-full h-full object-cover" alt="Farming technology"/>
-            <div className="absolute inset-0 border-[4px] md:border-[8px] border-foreground/20 mix-blend-overlay rounded-[30px] md:rounded-[40px] pointer-events-none"></div>
+            <div className="absolute inset-0 border-[4px] md:border-[8px] border-foreground/20 mix-blend-multiply dark:mix-blend-overlay rounded-[30px] md:rounded-[40px] pointer-events-none"></div>
          </div>
       </section>
 

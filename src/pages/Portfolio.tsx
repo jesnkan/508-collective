@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '@/components/SEO';
 
 const BUSINESSES = [
   {
@@ -53,6 +54,11 @@ const BUSINESSES = [
 export default function Portfolio() {
   return (
     <div className="bg-background min-h-screen text-foreground pt-24 md:pt-32 pb-20">
+      <SEO 
+        title="Business Portfolio | The 508 Ecosystem"
+        description="Explore the diverse businesses of the 508 ecosystem. From luxury retail and printing to sustainable agriculture and commerce."
+        keywords="508 portfolio, multi-industry ecosystem, business ventures, luxury retail, sustainable farming, commercial printing"
+      />
       <div className="max-w-[1600px] mx-auto px-6 md:px-12">
         <header className="mb-16 md:mb-24 text-center md:text-left">
           <p className="uppercase tracking-[0.3em] font-mono text-[10px] md:text-xs font-semibold mb-4 text-[#0096FF]">508 Ecosystem</p>
@@ -91,10 +97,10 @@ export default function Portfolio() {
                     </div>
                   </div>
                   <div>
-                    <h2 className="text-2xl md:text-6xl font-heading font-bold uppercase tracking-tighter mb-2 md:mb-4" style={{ color: business.color, textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>
+                    <h2 className="text-2xl md:text-6xl font-heading font-bold uppercase tracking-tighter mb-2 md:mb-4" style={{ color: business.color, textShadow: '0 2px 20px rgba(0,0,0,0.2)' }}>
                       {business.name}
                     </h2>
-                    <p className="text-base md:text-xl font-light text-white/90 drop-shadow-md pb-2">
+                    <p className="text-base md:text-xl font-light text-foreground drop-shadow-sm pb-2">
                        {business.tagline}
                     </p>
                   </div>

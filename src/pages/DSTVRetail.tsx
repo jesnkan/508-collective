@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 
 import { Link } from 'react-router-dom';
+import SEO from '@/components/SEO';
 
 export default function DSTVRetail() {
   const ref = useRef(null);
@@ -16,6 +17,11 @@ export default function DSTVRetail() {
 
   return (
     <div className="bg-background text-foreground min-h-screen">
+      <SEO 
+        title="DSTV Retail | Premium Entertainment & Electronics"
+        description="Your destination for DSTV subscriptions, installations, and premium electronics. Entertainment delivered with the ultimate retail experience."
+        keywords="DSTV Retail, DSTV subscription, DSTV installation, premium electronics, smart home integration, digital entertainment"
+      />
       <section ref={ref} className="relative h-[80vh] flex items-center justify-center overflow-hidden">
         <motion.div style={{ y, opacity }} className="absolute inset-0 z-0">
           <img 

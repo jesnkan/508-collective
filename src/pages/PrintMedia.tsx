@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 
 import { Link } from 'react-router-dom';
+import SEO from '@/components/SEO';
 
 export default function PrintMedia() {
   const ref = useRef(null);
@@ -16,6 +17,11 @@ export default function PrintMedia() {
 
   return (
     <div className="bg-background text-foreground min-h-screen">
+      <SEO 
+        title="Print Media | Professional Printing & Branding Solutions"
+        description="508 Print Media offers commercial printing, large format visuals, and branding solutions with precision and scale. Transform your ideas into physical realities."
+        keywords="Print Media, commercial printing, large format printing, branding solutions, outdoor advertising, digital printing"
+      />
       <section ref={ref} className="relative h-[80vh] flex items-center justify-center overflow-hidden">
         <motion.div style={{ y, opacity }} className="absolute inset-0 z-0">
           <img 

@@ -53,7 +53,7 @@ export default function Footer() {
         </div>
         
         <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-foreground/10 text-foreground/40 text-xs tracking-wider uppercase">
-          <p>© {new Date().getFullYear()} 508 Parent Company. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} 508 (Five Zero Eight) Parent Company. All rights reserved.</p>
           <div className="flex gap-6 mt-4 md:mt-0">
             <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-foreground transition-colors">Terms of Service</a>

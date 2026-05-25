@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
+import SEO from '@/components/SEO';
 
 const products = [
   {
@@ -41,6 +42,11 @@ export default function Depot() {
 
   return (
     <div className="bg-background text-foreground min-h-screen font-sans selection:bg-[#0096FF]/30 pt-24 md:pt-32">
+      <SEO 
+        title="Depot Store | Authentic Ghanaian Groceries"
+        description="Shop premium Ghanaian products at the Depot Store. From 508 Roasted Corn & Groundnuts to Organic Gari and Shito Dedeede."
+        keywords="Depot Store, 508 Roasted Corn, Organic Gari, Shito Dedeede, Ghanaian groceries, authentic West African food, organic snacks"
+      />
       {/* Header */}
       <section className="px-6 md:px-12 max-w-[1600px] mx-auto mb-8 md:mb-12">
         <div className="border-b border-foreground/10 pb-6 md:pb-8 flex justify-between items-end">

@@ -22,7 +22,7 @@ export default function Hero() {
         <div 
           className="absolute inset-0 opacity-10" 
           style={{ 
-            backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', 
+            backgroundImage: 'radial-gradient(currentColor 1px, transparent 1px)', 
             backgroundSize: '40px 40px' 
           }}
         ></div>
@@ -37,15 +37,15 @@ export default function Hero() {
         <motion.div
           animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
           transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-[10%] left-[20%] w-[40vw] h-[40vw] bg-[#0096FF]/20 rounded-full mix-blend-screen filter blur-[100px] opacity-60"
+          className="absolute top-[10%] left-[20%] w-[40vw] h-[40vw] bg-[#0096FF]/20 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[100px] opacity-60"
         />
         <motion.div
           animate={{ scale: [1, 1.3, 1], rotate: [0, -90, 0] }}
           transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute bottom-[20%] right-[10%] w-[35vw] h-[35vw] bg-[#FF1A1A]/20 rounded-full mix-blend-screen filter blur-[120px] opacity-50"
+          className="absolute bottom-[20%] right-[10%] w-[35vw] h-[35vw] bg-[#FF1A1A]/20 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[120px] opacity-50"
         />
         
-        <div className="absolute inset-0 opacity-15 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay"></div>
+        <div className="absolute inset-0 opacity-10 dark:opacity-15 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-multiply dark:mix-blend-overlay"></div>
       </motion.div>
 
       <div className="relative z-10 w-full h-full max-w-[1600px] mx-auto px-6 md:px-16 pt-32 pb-12 flex flex-col">

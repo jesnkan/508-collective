@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 
 import { Link } from 'react-router-dom';
+import SEO from '@/components/SEO';
 
 export default function CitySips() {
   const ref = useRef(null);
@@ -16,6 +17,11 @@ export default function CitySips() {
 
   return (
     <div className="bg-background text-foreground min-h-screen font-sans selection:bg-[#FF1A1A]/40">
+      <SEO 
+        title="City Sips | Curated Taste. Refined Living."
+        description="Experience the art of the pour at City Sips. Rare vintages, artisan spirits, and curated tasting experiences for the refined palate."
+        keywords="City Sips, rare vintages, artisan spirits, boutique wine, craft spirits, luxury drinks, curated tasting experiences"
+      />
       <section ref={ref} className="relative h-[80vh] md:h-[90vh] flex items-center justify-center overflow-hidden">
         <motion.div style={{ y, opacity }} className="absolute inset-0 z-0">
           <img 
@@ -25,7 +31,7 @@ export default function CitySips() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/80 to-background"></div>
           {/* Deep glass reflection / glow */}
-          <div className="absolute top-1/4 right-1/4 w-[40vw] h-[40vw] bg-[#FF1A1A] rounded-full blur-[150px] opacity-20 mix-blend-screen"></div>
+          <div className="absolute top-1/4 right-1/4 w-[40vw] h-[40vw] bg-[#FF1A1A] rounded-full blur-[150px] opacity-20 mix-blend-multiply dark:mix-blend-screen"></div>
         </motion.div>
 
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto flex flex-col items-center">
