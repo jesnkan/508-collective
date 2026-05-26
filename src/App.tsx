@@ -19,6 +19,7 @@ import DSTVRetail from '@/pages/DSTVRetail';
 import CitySips from '@/pages/CitySips';
 import Depot from '@/pages/Depot';
 import SuccessFarmhouse from '@/pages/SuccessFarmhouse';
+import { Analytics } from "@vercel/analytics/react";
 
 import { ReactLenis } from 'lenis/react';
 
@@ -69,6 +70,7 @@ export default function App() {
               <Footer />
             </div>
           </div>
+          <Analytics />
         </BrowserRouter>
       </ThemeProvider>
     </ReactLenis>
