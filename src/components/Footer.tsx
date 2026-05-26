@@ -9,9 +9,13 @@ export default function Footer() {
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-24">
           <div className="col-span-1 md:col-span-2">
-            <h2 className="font-heading text-6xl md:text-8xl font-medium tracking-tighter mb-6 text-foreground">
-              508.
-            </h2>
+            <Link to="/" className="inline-block hover:opacity-80 transition-opacity mb-8">
+              <img 
+                src="/508 logo.png" 
+                alt="508 Logo" 
+                className="h-16 md:h-20 w-auto object-contain"
+              />
+            </Link>
             <p className="text-foreground/50 max-w-sm mb-8 text-lg">
               One Vision. Multiple Ventures. Building businesses that shape industries across the globe.
             </p>

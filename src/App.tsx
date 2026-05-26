@@ -11,6 +11,8 @@ import Footer from '@/components/Footer';
 import { ThemeProvider } from '@/components/ThemeProvider';
 
 import Home from '@/pages/Home';
+import About from '@/pages/About';
+import Connect from '@/pages/Connect';
 import Portfolio from '@/pages/Portfolio';
 import PrintMedia from '@/pages/PrintMedia';
 import DSTVRetail from '@/pages/DSTVRetail';
@@ -54,6 +56,8 @@ export default function App() {
               <main className="flex-1">
                 <Routes>
                   <Route path="/" element={<Home />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/connect" element={<Connect />} />
                   <Route path="/portfolio" element={<Portfolio />} />
                   <Route path="/print-media" element={<PrintMedia />} />
                   <Route path="/dstv-retail" element={<DSTVRetail />} />

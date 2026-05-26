@@ -21,10 +21,10 @@ export default function Navigation() {
 
   const navLinks = [
     { name: 'PORTFOLIO', path: '/portfolio' },
-    { name: 'ABOUT', path: '/#about' },
+    { name: 'ABOUT', path: '/about' },
     { name: 'DEPOT', path: '/depot' },
     { name: 'VISION', path: '/#vision' },
-    { name: 'CONNECT', path: '/#contact' },
+    { name: 'CONNECT', path: '/connect' },
   ];
 
   return (
@@ -40,9 +40,13 @@ export default function Navigation() {
           {/* Logo Section - Significantly Pushed Left */}
           <Link 
             to="/" 
-            className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-foreground text-background font-heading font-black text-sm md:text-base hover:scale-110 transition-transform shrink-0"
+            className="flex items-center justify-center hover:scale-110 transition-transform shrink-0"
           >
-            508
+            <img 
+              src={mounted && theme === 'dark' ? "/508 dark logo.png" : "/508 logo.png"} 
+              alt="508 Logo" 
+              className="h-11 md:h-14 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop Nav - Centered with large breathing room */}

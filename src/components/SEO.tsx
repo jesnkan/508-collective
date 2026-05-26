@@ -12,7 +12,7 @@ export default function SEO({
   title, 
   description, 
   keywords, 
-  ogImage = 'https://fivezeroeight.org/og-image.jpg',
+  ogImage = 'https://fivezeroeight.org/508%20dark%20logo.png',
   ogType = 'website'
 }: SEOProps) {
   useEffect(() => {
