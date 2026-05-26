@@ -126,58 +126,38 @@ export default function About() {
       </section>
 
       {/* Leadership Section */}
-      <section className="py-32 px-6 md:px-12 max-w-[1600px] mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-center">
-          <motion.div 
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="relative"
-          >
-            <div className="aspect-[4/5] rounded-[40px] overflow-hidden shadow-2xl relative z-10">
-              <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop" 
-                alt="Abbey Clottey - CEO" 
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent"></div>
-            </div>
-            {/* Decorative background element */}
-            <div className="absolute -top-12 -left-12 w-64 h-64 bg-primary/10 rounded-full blur-[80px] -z-10"></div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.2 }}
-          >
-            <p className="uppercase tracking-[0.4em] text-[10px] md:text-xs font-semibold mb-6 text-primary">Leadership</p>
-            <h2 className="text-4xl md:text-6xl font-heading font-bold tracking-tighter mb-8">
-              Abbey <span className="italic font-light">Clottey</span>
-            </h2>
-            <p className="text-xs uppercase tracking-[0.2em] font-mono text-foreground/40 mb-8">Founder & Chief Executive Officer</p>
-            
-            <div className="space-y-6 text-lg text-foreground/70 font-light leading-relaxed">
-              <p>
-                As the visionary force behind 508, Abbey Clottey has dedicated his career to building businesses that challenge the status quo. With a deep-rooted passion for innovation and community growth, he has steered the company across diverse industries with a singular focus: excellence.
-              </p>
-              <p>
-                "Our goal is not just to participate in the market, but to redefine it. At 508, we believe that by fostering synergy between retail, agriculture, and media, we can create a sustainable future that benefits everyone."
-              </p>
-            </div>
-            
-            <div className="mt-12 flex gap-6">
-               <a href="#" className="w-12 h-12 rounded-full border border-foreground/10 flex items-center justify-center hover:bg-foreground hover:text-background transition-all">
-                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-               </a>
-               <a href="#" className="w-12 h-12 rounded-full border border-foreground/10 flex items-center justify-center hover:bg-foreground hover:text-background transition-all">
-                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
-               </a>
-            </div>
-          </motion.div>
-        </div>
+      <section className="py-32 px-6 md:px-12 max-w-[1600px] mx-auto text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="max-w-3xl mx-auto"
+        >
+          <p className="uppercase tracking-[0.4em] text-[10px] md:text-xs font-semibold mb-6 text-primary">Leadership</p>
+          <h2 className="text-4xl md:text-6xl font-heading font-bold tracking-tighter mb-8">
+            Abbey <span className="italic font-light">Clottey</span>
+          </h2>
+          <p className="text-xs uppercase tracking-[0.2em] font-mono text-foreground/40 mb-8">Founder & Chief Executive Officer</p>
+          
+          <div className="space-y-6 text-lg text-foreground/70 font-light leading-relaxed">
+            <p>
+              As the visionary force behind 508, Abbey Clottey has dedicated his career to building businesses that challenge the status quo. With a deep-rooted passion for innovation and community growth, he has steered the company across diverse industries with a singular focus: excellence.
+            </p>
+            <p>
+              "Our goal is not just to participate in the market, but to redefine it. At 508, we believe that by fostering synergy between retail, agriculture, and media, we can create a sustainable future that benefits everyone."
+            </p>
+          </div>
+          
+          <div className="mt-12 flex gap-6 justify-center">
+             <a href="#" className="w-12 h-12 rounded-full border border-foreground/10 flex items-center justify-center hover:bg-foreground hover:text-background transition-all">
+               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+             </a>
+             <a href="#" className="w-12 h-12 rounded-full border border-foreground/10 flex items-center justify-center hover:bg-foreground hover:text-background transition-all">
+               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+             </a>
+          </div>
+        </motion.div>
       </section>
 
       {/* CTA Section */}
