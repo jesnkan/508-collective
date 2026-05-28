@@ -1,6 +1,8 @@
+'use client';
+
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -17,13 +19,13 @@ export default function Hero() {
       {/* Immersive Background */}
       <motion.div style={{ y, opacity }} className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-background"></div>
-        
+
         {/* Subtle Grid Pattern */}
-        <div 
-          className="absolute inset-0 opacity-10" 
-          style={{ 
-            backgroundImage: 'radial-gradient(currentColor 1px, transparent 1px)', 
-            backgroundSize: '40px 40px' 
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: 'radial-gradient(currentColor 1px, transparent 1px)',
+            backgroundSize: '40px 40px'
           }}
         ></div>
 
@@ -35,38 +37,38 @@ export default function Hero() {
 
         {/* Animated Abstract Blobs */}
         <motion.div
-          animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
-          transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-[10%] left-[20%] w-[40vw] h-[40vw] bg-[#0096FF]/20 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[100px] opacity-60"
+          animate={{ scale: [1, 1.15, 1], rotate: [0, 45, 0] }}
+          transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute top-[10%] left-[20%] w-[40vw] h-[40vw] bg-[#0096FF]/15 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[80px] opacity-60 will-change-transform"
         />
         <motion.div
-          animate={{ scale: [1, 1.3, 1], rotate: [0, -90, 0] }}
-          transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute bottom-[20%] right-[10%] w-[35vw] h-[35vw] bg-[#FF1A1A]/20 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[120px] opacity-50"
+          animate={{ scale: [1, 1.2, 1], rotate: [0, -45, 0] }}
+          transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute bottom-[20%] right-[10%] w-[35vw] h-[35vw] bg-[#FF1A1A]/15 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[100px] opacity-50 will-change-transform"
         />
-        
+
         <div className="absolute inset-0 opacity-10 dark:opacity-15 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-multiply dark:mix-blend-overlay"></div>
       </motion.div>
 
       <div className="relative z-10 w-full h-full max-w-[1600px] mx-auto px-6 md:px-16 pt-32 pb-12 flex flex-col">
-        
+
         {/* Main Content Area */}
         <div className="flex-1 w-full relative flex flex-col items-center md:items-end justify-center">
-          
+
           {/* Big "508" Background Text */}
-          <motion.div 
+          <motion.div
              initial={{ opacity: 0, scale: 0.8 }}
              animate={{ opacity: 1, scale: 1 }}
              transition={{ duration: 1.2 }}
-             className="absolute left-1/2 md:left-0 top-[25%] md:top-1/2 -translate-x-1/2 md:-translate-x-0 md:-translate-y-1/2 pointer-events-none z-0 font-heading font-black tracking-tighter"
+             className="absolute left-1/2 md:left-0 top-[25%] md:top-1/2 -translate-x-1/2 md:-translate-x-0 md:-translate-y-1/2 pointer-events-none z-0 font-heading font-black tracking-tighter will-change-transform"
           >
-             <h1 className="text-[60vw] md:text-[500px] leading-none text-transparent bg-clip-text bg-gradient-to-br from-[#0096FF] via-[#FF1A1A] to-[#FFD60A] opacity-20 md:opacity-100">
-               508
-             </h1>
+            <h1 className="text-[60vw] md:text-[500px] leading-none text-transparent bg-clip-text bg-gradient-to-br from-[#0096FF] via-[#FF1A1A] to-[#FFD60A] opacity-20 md:opacity-100">
+              508
+            </h1>
           </motion.div>
 
           {/* Foreground Content */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
@@ -91,10 +93,10 @@ export default function Hero() {
                 className="w-full sm:w-auto"
               >
                 <Link
-                  to="/portfolio"
+                  href="/portfolio"
                   className="bg-foreground text-background px-10 py-5 rounded-full font-bold uppercase tracking-[0.1em] text-xs flex items-center justify-center gap-4 transition-colors hover:bg-foreground/90 shadow-2xl group"
                 >
-                  Explore Ecosystem 
+                  Explore Ecosystem
                   <div className="w-6 h-6 bg-background/20 rounded-full flex items-center justify-center transition-transform group-hover:translate-x-1">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -109,7 +111,7 @@ export default function Hero() {
 
         {/* Footer Widgets Area */}
         <div className="mt-auto w-full flex justify-center md:justify-start">
-           <motion.div 
+           <motion.div
              initial={{ opacity: 0, y: 20 }}
              animate={{ opacity: 1, y: 0 }}
              transition={{ duration: 0.8, delay: 0.6 }}
@@ -128,7 +130,6 @@ export default function Hero() {
         </div>
 
       </div>
-
     </section>
   );
 }

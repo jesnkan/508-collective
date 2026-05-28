@@ -1,10 +1,11 @@
+'use client';
+
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 
-import { Link } from 'react-router-dom';
-import SEO from '@/components/SEO';
-
-export default function SuccessFarmhouse() {
+export default function FarmhouseClient() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -16,17 +17,15 @@ export default function SuccessFarmhouse() {
 
   return (
     <div className="bg-background text-foreground min-h-screen font-sans">
-      <SEO 
-        title="Success Farmhouse | Sustainable Agribusiness & Innovation"
-        description="Cultivating the future at Success Farmhouse. Modern approach to agribusiness, sustainable farming practices, and high-quality organic produce."
-        keywords="Success Farmhouse, sustainable agriculture, organic farming, agribusiness, agricultural innovation, farming technology, organic produce"
-      />
       <section ref={ref} className="relative h-[70vh] md:h-[85vh] flex items-center justify-center overflow-hidden rounded-b-[40px] md:rounded-b-[60px] shadow-sm">
-        <motion.div style={{ y }} className="absolute inset-0 z-0">
-          <img 
+        <motion.div style={{ y }} className="absolute inset-0 z-0 will-change-transform">
+          <Image 
             src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2064&auto=format&fit=crop" 
             alt="Success Farmhouse" 
-            className="w-full h-full object-cover opacity-90"
+            fill
+            className="object-cover opacity-90"
+            priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-background/30 mix-blend-multiply dark:mix-blend-multiply"></div>
         </motion.div>
@@ -73,7 +72,13 @@ export default function SuccessFarmhouse() {
             </p>
          </div>
          <div className="relative h-[350px] md:h-[500px] rounded-[30px] md:rounded-[40px] overflow-hidden shadow-2xl">
-            <img src="https://images.unsplash.com/photo-1592982537447-66a90802c673?auto=format&fit=crop&q=80&w=1000" className="w-full h-full object-cover" alt="Farming technology"/>
+            <Image 
+              src="https://images.unsplash.com/photo-1592982537447-66a90802c673?auto=format&fit=crop&q=80&w=1000" 
+              fill
+              className="object-cover" 
+              alt="Farming technology"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
             <div className="absolute inset-0 border-[4px] md:border-[8px] border-foreground/20 mix-blend-multiply dark:mix-blend-overlay rounded-[30px] md:rounded-[40px] pointer-events-none"></div>
          </div>
       </section>
@@ -83,7 +88,7 @@ export default function SuccessFarmhouse() {
         
         <h2 className="text-3xl md:text-5xl font-heading mb-8 md:mb-12 relative z-10">Cultivate Success</h2>
         <Link 
-          to="/#contact"
+          href="/#contact"
           className="inline-block px-8 py-4 md:px-10 md:py-5 rounded-full bg-[#10B981] text-white font-semibold uppercase tracking-wider text-xs md:text-sm hover:bg-[#0c9668] transition-colors duration-300 relative z-10 shadow-[0_10px_30px_rgba(16,185,129,0.3)] w-full md:w-auto"
         >
           Discover Our Produce

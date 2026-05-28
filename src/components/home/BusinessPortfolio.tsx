@@ -1,6 +1,9 @@
+'use client';
+
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const BUSINESSES = [
   {
@@ -61,20 +64,27 @@ function Card({ business, index }: { business: typeof BUSINESSES[0], index: numb
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
 
   return (
-    <motion.div 
+    <motion.div
       ref={cardRef}
       style={{ scale }}
       className={`relative w-full min-h-[50vh] md:min-h-[80vh] rounded-[24px] md:rounded-[40px] overflow-hidden group mb-8 md:mb-24 md:sticky md:top-24 shadow-[0_0_80px_rgba(0,0,0,0.5)] border border-foreground/10 ${index % 2 === 0 ? 'lg:w-[85%]' : 'lg:w-[85%] lg:ml-auto'}`}
     >
-      <Link to={business.path} className="absolute inset-0 block z-0">
+      <Link href={business.path} className="absolute inset-0 block z-0">
         {/* Background Image with Parallax */}
         <motion.div style={{ y }} className="absolute inset-[-10%] w-[120%] h-[120%] bg-black">
           <div className="absolute inset-0 bg-black/60 md:bg-black/50 group-hover:bg-black/20 transition-colors duration-700 z-10"></div>
-          <img src={business.image} alt={business.name} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-1000" />
+          <Image 
+            src={business.image} 
+            alt={business.name} 
+            fill
+            className="object-cover opacity-80 group-hover:opacity-100 transition-all duration-1000"
+            sizes="(max-width: 768px) 100vw, 85vw"
+            priority={index < 2}
+          />
         </motion.div>
 
         {/* Glow/Gradient overlay based on brand color */}
-        <div 
+        <div
           className="absolute inset-0 z-20 opacity-40 group-hover:opacity-80 transition-opacity duration-700 mix-blend-overlay"
           style={{ background: `linear-gradient(to bottom right, ${business.color}, transparent)` }}
         ></div>
@@ -84,7 +94,7 @@ function Card({ business, index }: { business: typeof BUSINESSES[0], index: numb
             <span className="text-white font-mono text-[10px] md:text-sm tracking-widest border border-white/20 rounded-full px-3 py-1 bg-black/40 backdrop-blur-md">
               0{index + 1}
             </span>
-            <div 
+            <div
               className="w-10 h-10 md:w-16 md:h-16 rounded-full border border-white/30 flex items-center justify-center backdrop-blur-md -rotate-45 group-hover:rotate-0 transition-transform duration-500 overflow-hidden"
               style={{ backgroundColor: `${business.color}20` }}
             >

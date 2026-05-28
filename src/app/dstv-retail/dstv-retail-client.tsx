@@ -1,10 +1,11 @@
+'use client';
+
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 
-import { Link } from 'react-router-dom';
-import SEO from '@/components/SEO';
-
-export default function DSTVRetail() {
+export default function DSTVRetailClient() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -17,17 +18,15 @@ export default function DSTVRetail() {
 
   return (
     <div className="bg-background text-foreground min-h-screen">
-      <SEO 
-        title="DSTV Retail | Premium Entertainment & Electronics"
-        description="Your destination for DSTV subscriptions, installations, and premium electronics. Entertainment delivered with the ultimate retail experience."
-        keywords="DSTV Retail, DSTV subscription, DSTV installation, premium electronics, smart home integration, digital entertainment"
-      />
       <section ref={ref} className="relative h-[80vh] flex items-center justify-center overflow-hidden">
-        <motion.div style={{ y, opacity }} className="absolute inset-0 z-0">
-          <img 
+        <motion.div style={{ y, opacity }} className="absolute inset-0 z-0 will-change-transform">
+          <Image 
             src="/dstv picture.jpg" 
             alt="DSTV Retail" 
-            className="w-full h-full object-cover opacity-40 filter grayscale"
+            fill
+            className="object-cover opacity-40 filter grayscale"
+            priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
           {/* Brand glow overlay */}
@@ -93,7 +92,7 @@ export default function DSTVRetail() {
       <section className="py-20 md:py-32 px-6 text-center border-t border-foreground/10">
         <h2 className="text-3xl md:text-6xl font-heading tracking-tight mb-8 md:mb-12">Upgrade your entertainment.</h2>
         <Link 
-          to="/#contact"
+          href="/#contact"
           className="inline-block px-8 py-4 md:px-10 md:py-5 rounded-full text-black font-semibold uppercase tracking-wider text-xs md:text-sm hover:scale-105 transition-transform duration-300 shadow-[0_10px_40px_rgba(255,214,10,0.3)] w-full md:w-auto"
           style={{ backgroundColor: brandColor }}
         >

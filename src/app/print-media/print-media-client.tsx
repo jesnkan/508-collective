@@ -1,10 +1,11 @@
+'use client';
+
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 
-import { Link } from 'react-router-dom';
-import SEO from '@/components/SEO';
-
-export default function PrintMedia() {
+export default function PrintMediaClient() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -17,17 +18,15 @@ export default function PrintMedia() {
 
   return (
     <div className="bg-background text-foreground min-h-screen">
-      <SEO 
-        title="Print Media | Professional Printing & Branding Solutions"
-        description="508 Print Media offers commercial printing, large format visuals, and branding solutions with precision and scale. Transform your ideas into physical realities."
-        keywords="Print Media, commercial printing, large format printing, branding solutions, outdoor advertising, digital printing"
-      />
       <section ref={ref} className="relative h-[80vh] flex items-center justify-center overflow-hidden">
-        <motion.div style={{ y, opacity }} className="absolute inset-0 z-0">
-          <img 
+        <motion.div style={{ y, opacity }} className="absolute inset-0 z-0 will-change-transform">
+          <Image 
             src="/print picture.jpg" 
             alt="Print Media" 
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-background/60 mix-blend-multiply"></div>
           {/* Brand glow overlay */}
@@ -91,10 +90,16 @@ export default function PrintMedia() {
 
       {/* Gallery */}
       <section className="py-20 overflow-hidden bg-foreground/5">
-         <div className="flex gap-4 md:gap-6 px-6 relative w-[200vw] animate-[marquee_30s_linear_infinite]">
+         <div className="flex gap-4 md:gap-6 px-6 relative w-[200vw] animate-[marquee_30s_linear_infinite] will-change-transform">
             {[1,2,3,4,5,6].map((i) => (
-              <div key={i} className="w-[280px] h-[350px] md:w-[400px] md:h-[500px] flex-shrink-0 rounded-[20px] md:rounded-[30px] overflow-hidden">
-                <img src={`/print picture.jpg`} alt={`Gallery item ${i}`} className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-500"/>
+              <div key={i} className="w-[280px] h-[350px] md:w-[400px] md:h-[500px] flex-shrink-0 rounded-[20px] md:rounded-[30px] overflow-hidden relative">
+                <Image 
+                  src={`/print picture.jpg`} 
+                  alt={`Gallery item ${i}`} 
+                  fill
+                  className="object-cover filter grayscale hover:grayscale-0 transition-all duration-500"
+                  sizes="(max-width: 768px) 280px, 400px"
+                />
               </div>
             ))}
          </div>
@@ -103,7 +108,7 @@ export default function PrintMedia() {
       <section className="py-20 md:py-32 px-6 md:px-12 text-center max-w-[800px] mx-auto">
         <h2 className="text-3xl md:text-5xl font-heading tracking-tight mb-8 md:mb-12">Ready to start printing?</h2>
         <Link 
-          to="/#contact"
+          href="/#contact"
           className="inline-block px-8 py-4 md:px-10 md:py-5 rounded-full text-white font-semibold uppercase tracking-wider text-xs md:text-sm hover:scale-105 transition-transform duration-300 shadow-[0_10px_40px_rgba(0,150,255,0.4)] w-full md:w-auto"
           style={{ backgroundColor: brandColor }}
         >

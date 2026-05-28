@@ -1,7 +1,8 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
-import { Link } from 'react-router-dom';
-import SEO from '@/components/SEO';
+'use client';
+
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const BUSINESSES = [
   {
@@ -51,14 +52,9 @@ const BUSINESSES = [
   }
 ];
 
-export default function Portfolio() {
+export default function PortfolioClient() {
   return (
     <div className="bg-background min-h-screen text-foreground pt-24 md:pt-32 pb-20">
-      <SEO 
-        title="Business Portfolio | The 508 Ecosystem"
-        description="Explore the diverse businesses of the 508 ecosystem. From luxury retail and printing to sustainable agriculture and commerce."
-        keywords="508 portfolio, multi-industry ecosystem, business ventures, luxury retail, sustainable farming, commercial printing"
-      />
       <div className="max-w-[1600px] mx-auto px-6 md:px-12">
         <header className="mb-16 md:mb-24 text-center md:text-left">
           <p className="uppercase tracking-[0.3em] font-mono text-[10px] md:text-xs font-semibold mb-4 text-[#0096FF]">508 Ecosystem</p>
@@ -73,12 +69,19 @@ export default function Portfolio() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-20">
           {BUSINESSES.map((business, i) => (
              <Link 
-               to={business.path} 
+               href={business.path} 
                key={business.id} 
                className={`group block overflow-hidden rounded-[24px] md:rounded-3xl relative border border-foreground/10 bg-foreground/[0.02] ${i === 0 ? 'lg:col-span-2 aspect-square md:aspect-[21/9]' : 'aspect-square lg:aspect-[4/5]'}`}
              >
                 <div className="absolute inset-0">
-                  <img src={business.image} alt={business.name} className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-100 group-hover:scale-105" />
+                  <Image 
+                    src={business.image} 
+                    alt={business.name} 
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-100 group-hover:scale-105" 
+                    priority={i < 2}
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
                 </div>
                 

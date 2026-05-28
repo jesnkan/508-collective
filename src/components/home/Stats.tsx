@@ -1,3 +1,5 @@
+'use client';
+
 import { motion, useInView } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 
@@ -8,7 +10,7 @@ function Counter({ from, to, duration = 2, suffix = '' }: { from: number, to: nu
 
   useEffect(() => {
     if (inView) {
-      let start = null;
+      let start: number | null = null;
       const step = (timestamp: number) => {
         if (!start) start = timestamp;
         const progress = Math.min((timestamp - start) / (duration * 1000), 1);
@@ -43,7 +45,7 @@ export default function Stats() {
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 lg:gap-8 divide-y md:divide-y-0 md:divide-x divide-background/10">
           {stats.map((stat, i) => (
-            <motion.div 
+            <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}

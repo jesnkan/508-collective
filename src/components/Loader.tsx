@@ -1,3 +1,5 @@
+'use client';
+
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
@@ -11,18 +13,18 @@ export default function Loader({ isLoading }: { isLoading: boolean }) {
       const contentTimer = setTimeout(() => setShowContent(true), 1000);
 
       const startTime = Date.now();
-      const duration = 2800; 
-      
+      const duration = 1000;
+
       const updateProgress = () => {
         const elapsed = Date.now() - startTime;
         const currentProgress = Math.min(Math.floor((elapsed / duration) * 100), 100);
         setProgress(currentProgress);
-        
+
         if (elapsed < duration) {
           requestAnimationFrame(updateProgress);
         }
       };
-      
+
       requestAnimationFrame(updateProgress);
       return () => clearTimeout(contentTimer);
     }
@@ -42,7 +44,7 @@ export default function Loader({ isLoading }: { isLoading: boolean }) {
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 60 }}
-              transition={{ 
+              transition={{
                 duration: 1.2,
                 ease: [0.76, 0, 0.24, 1]
               }}
@@ -52,7 +54,7 @@ export default function Loader({ isLoading }: { isLoading: boolean }) {
 
           <AnimatePresence>
             {showContent && (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6 }}
@@ -62,7 +64,7 @@ export default function Loader({ isLoading }: { isLoading: boolean }) {
                 <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
 
                 <div className="relative flex flex-col items-center justify-center w-full max-w-md px-6 z-10 w-64">
-                  
+
                   <div className="w-full flex justify-between items-end mb-4 overflow-hidden">
                     <motion.div
                       initial={{ y: 20, opacity: 0 }}
@@ -72,7 +74,7 @@ export default function Loader({ isLoading }: { isLoading: boolean }) {
                     >
                       Loading
                     </motion.div>
-                    <motion.div 
+                    <motion.div
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.2 }}
@@ -83,14 +85,14 @@ export default function Loader({ isLoading }: { isLoading: boolean }) {
                   </div>
 
                   {/* Progress Bar Container */}
-                  <motion.div 
+                  <motion.div
                     initial={{ scaleX: 0, opacity: 0 }}
                     animate={{ scaleX: 1, opacity: 1 }}
                     transition={{ delay: 0.1, duration: 0.5, ease: "easeOut" }}
                     className="w-full h-[1px] bg-foreground/10 relative overflow-hidden origin-left"
                   >
                     {/* Active Progress */}
-                    <motion.div 
+                    <motion.div
                       className="absolute top-0 left-0 bottom-0 bg-foreground origin-left"
                       style={{ width: `${progress}%` }}
                     />

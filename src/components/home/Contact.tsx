@@ -1,13 +1,15 @@
+'use client';
+
 import { motion } from 'framer-motion';
 
 export default function Contact() {
   return (
     <section id="contact" className="bg-background text-foreground py-20 md:py-32 rounded-t-[40px] md:rounded-t-[60px] relative z-40 overflow-hidden mt-[-40px] md:mt-[-60px]">
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-multiply dark:mix-blend-overlay pointer-events-none"></div>
-      
+
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24">
-          
+
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -24,27 +26,27 @@ export default function Contact() {
 
             <form className="space-y-6 md:space-y-8">
               <div className="relative group">
-                <input 
-                  type="text" 
-                  placeholder="YOUR NAME" 
+                <input
+                  type="text"
+                  placeholder="YOUR NAME"
                   className="w-full bg-transparent border-b border-foreground/20 py-3 md:py-4 text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-primary transition-colors tracking-widest text-[10px] md:text-xs uppercase"
                 />
               </div>
               <div className="relative group">
-                <input 
-                  type="email" 
-                  placeholder="EMAIL ADDRESS" 
+                <input
+                  type="email"
+                  placeholder="EMAIL ADDRESS"
                   className="w-full bg-transparent border-b border-foreground/20 py-3 md:py-4 text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-primary transition-colors tracking-widest text-[10px] md:text-xs uppercase"
                 />
               </div>
               <div className="relative group">
-                <textarea 
-                  placeholder="HOW CAN WE HELP?" 
+                <textarea
+                  placeholder="HOW CAN WE HELP?"
                   rows={4}
                   className="w-full bg-transparent border-b border-foreground/20 py-3 md:py-4 text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-primary transition-colors tracking-widest text-[10px] md:text-xs uppercase resize-none"
                 ></textarea>
               </div>
-              <button 
+              <button
                 type="submit"
                 className="group relative px-8 md:px-10 py-4 md:py-5 overflow-hidden rounded-full border border-foreground hover:border-transparent transition-all duration-300 w-full md:w-auto"
               >
@@ -68,13 +70,13 @@ export default function Contact() {
                  <p className="text-foreground font-heading text-xl md:text-2xl tracking-tight mb-4 drop-shadow-md">Visit Headquarters</p>
                  <a href="https://maps.google.com/?q=508+Print+Media,+Adenta,+GH" target="_blank" rel="noopener noreferrer" className="uppercase tracking-widest text-[10px] md:text-xs border-b border-primary text-primary pb-1 pointer-events-auto">Get Directions</a>
               </div>
-              <iframe 
-                src="https://maps.google.com/maps?q=508+Print+Media,+Adenta,+GH&t=&z=13&ie=UTF8&iwloc=&output=embed" 
-                width="100%" 
-                height="100%" 
-                style={{ border: 0 }} 
-                allowFullScreen={false} 
-                loading="lazy" 
+              <iframe
+                src="https://maps.google.com/maps?q=508+Print+Media,+Adenta,+GH&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={false}
+                loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 className="absolute inset-0 w-full h-full filter grayscale contrast-125 opacity-70 group-hover:filter-none group-hover:opacity-100 transition-all duration-700"
               ></iframe>

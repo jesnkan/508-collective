@@ -1,5 +1,8 @@
+'use client';
+
 import { motion } from 'framer-motion';
-import SEO from '@/components/SEO';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const VALUES = [
   {
@@ -20,22 +23,16 @@ const VALUES = [
   }
 ];
 
-export default function About() {
+export default function AboutClient() {
   return (
     <div className="bg-background text-foreground min-h-screen pt-32 pb-20 overflow-hidden">
-      <SEO 
-        title="About Us | The 508 Vision"
-        description="Learn more about 508 (Five Zero Eight), a multi-industry conglomerate building the future of retail, media, agriculture, and lifestyle in Ghana and beyond."
-        keywords="about 508, five zero eight company, 508 ecosystem, business philosophy, innovation ghana, sustainable agriculture, premium retail"
-      />
-
       {/* Hero Section */}
       <section className="px-6 md:px-12 max-w-[1600px] mx-auto mb-32">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-5xl"
+          className="max-w-5xl will-change-transform"
         >
           <p className="uppercase tracking-[0.4em] text-[10px] md:text-xs font-semibold mb-8 text-primary">The Genesis</p>
           <h1 className="text-5xl md:text-8xl lg:text-[120px] font-heading font-medium tracking-tighter leading-[0.9] mb-12">
@@ -74,7 +71,7 @@ export default function About() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    className="p-6 rounded-2xl bg-background border border-foreground/5 hover:border-primary/20 transition-colors group"
+                    className="p-6 rounded-2xl bg-background border border-foreground/5 hover:border-primary/20 transition-colors group will-change-transform"
                   >
                     <h3 className="text-lg font-heading font-bold mb-3 group-hover:text-primary transition-colors">{value.title}</h3>
                     <p className="text-sm text-foreground/50 leading-relaxed font-light">{value.description}</p>
@@ -84,10 +81,12 @@ export default function About() {
             </div>
             
             <div className="relative aspect-square lg:aspect-auto h-full min-h-[500px] rounded-[40px] overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 shadow-2xl">
-              <img 
+              <Image 
                 src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop" 
                 alt="Modern Office" 
+                fill
                 className="w-full h-full object-cover scale-110"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
               <div className="absolute bottom-12 left-12 right-12">
@@ -132,7 +131,7 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="max-w-3xl mx-auto"
+          className="max-w-3xl mx-auto will-change-transform"
         >
           <p className="uppercase tracking-[0.4em] text-[10px] md:text-xs font-semibold mb-6 text-primary">Leadership</p>
           <h2 className="text-4xl md:text-6xl font-heading font-bold tracking-tighter mb-8">
@@ -171,8 +170,8 @@ export default function About() {
             We are always looking for visionary partners, investors, and talent to join our ecosystem. Let's build the future together.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-             <a href="/#contact" className="px-10 py-5 bg-foreground text-background rounded-full font-bold uppercase tracking-widest text-xs hover:bg-primary transition-colors shadow-xl">Get In Touch</a>
-             <a href="/portfolio" className="px-10 py-5 border border-foreground/20 rounded-full font-bold uppercase tracking-widest text-xs hover:border-primary transition-colors">View Portfolio</a>
+             <Link href="/#contact" className="px-10 py-5 bg-foreground text-background rounded-full font-bold uppercase tracking-widest text-xs hover:bg-primary transition-colors shadow-xl">Get In Touch</Link>
+             <Link href="/portfolio" className="px-10 py-5 border border-foreground/20 rounded-full font-bold uppercase tracking-widest text-xs hover:border-primary transition-colors">View Portfolio</Link>
           </div>
         </div>
       </section>

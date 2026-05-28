@@ -1,9 +1,10 @@
+'use client';
+
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Instagram, Linkedin, Twitter, CheckCircle, AlertCircle, Sun, Moon } from 'lucide-react';
-import SEO from '@/components/SEO';
+import { Mail, Phone, MapPin, Send, Instagram, Linkedin, Twitter, CheckCircle, AlertCircle } from 'lucide-react';
 
-export default function Connect() {
+export default function ConnectClient() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -41,11 +42,6 @@ export default function Connect() {
 
   return (
     <div className="min-h-screen bg-[#f8f9fa] dark:bg-background text-slate-900 dark:text-foreground pt-32 pb-20 overflow-hidden font-sans transition-colors duration-500">
-      <SEO 
-        title="Connect With Us | 508"
-        description="Get in touch with 508 (Five Zero Eight). We're always open to new partnerships, inquiries, and visionary collaborations."
-        keywords="contact 508, connect with five zero eight, business inquiries ghana, 508 partnerships, contact success farmhouse, contact city sips"
-      />
 
       {/* Vibrant Background Elements */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-400/20 dark:bg-blue-600/10 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2"></div>

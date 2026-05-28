@@ -1,4 +1,7 @@
-import { Link } from 'react-router-dom';
+'use client';
+
+import Link from 'next/link';
+import Image from 'next/image';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import { Sun, Moon, Menu, X } from 'lucide-react';
@@ -31,22 +34,28 @@ export default function Navigation() {
     <>
       <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none">
         <motion.header
-          style={{ 
+          style={{
             y: headerY,
             scale,
           }}
-          className="pointer-events-auto flex items-center bg-background/70 backdrop-blur-2xl border border-foreground/10 rounded-full shadow-2xl px-4 md:px-8 py-2 w-fit max-w-[95vw] gap-8 md:gap-24"
+          className="pointer-events-auto flex items-center bg-background/70 backdrop-blur-xl md:backdrop-blur-2xl border border-foreground/10 rounded-full shadow-2xl px-4 md:px-8 py-2 w-fit max-w-[95vw] gap-8 md:gap-24"
         >
           {/* Logo Section - Significantly Pushed Left */}
-          <Link 
-            to="/" 
-            className="flex items-center justify-center hover:scale-110 transition-transform shrink-0"
+          <Link
+            href="/"
+            className="flex items-center justify-center hover:scale-110 transition-transform shrink-0 relative h-11 md:h-14 w-32 md:w-40"
           >
-            <img 
-              src={mounted && theme === 'dark' ? "/508 dark logo.png" : "/508 logo.png"} 
-              alt="508 Logo" 
-              className="h-11 md:h-14 w-auto object-contain"
-            />
+            {mounted ? (
+              <Image
+                src={theme === 'dark' ? "/508 dark logo.png" : "/508 logo.png"}
+                alt="508 Logo"
+                fill
+                className="object-contain"
+                priority
+              />
+            ) : (
+               <div className="w-full h-full" />
+            )}
           </Link>
 
           {/* Desktop Nav - Centered with large breathing room */}
@@ -54,7 +63,7 @@ export default function Navigation() {
             {navLinks.map((item) => (
               <Link
                 key={item.name}
-                to={item.path}
+                href={item.path}
                 className="text-[10px] font-bold text-foreground/50 uppercase tracking-[0.2em] px-4 py-2 rounded-full hover:text-foreground hover:bg-foreground/5 transition-all"
               >
                 {item.name}
@@ -75,8 +84,8 @@ export default function Navigation() {
             )}
 
             {/* Mobile Menu Toggle */}
-            <button 
-              className="md:hidden flex items-center justify-center w-10 h-10 rounded-full hover:bg-foreground/5 text-foreground transition-colors"
+            <button
+              className="md:hidden flex items-center justify-center w-10 h-10 rounded-full hover-bg-foreground/5 text-foreground transition-colors"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -95,7 +104,7 @@ export default function Navigation() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-40 bg-background/95 backdrop-blur-xl md:hidden flex flex-col items-center justify-center"
           >
-             <button 
+            <button
               className="absolute top-8 right-8 text-foreground/50 hover:text-foreground p-4"
               onClick={() => setMobileMenuOpen(false)}
             >
@@ -111,7 +120,7 @@ export default function Navigation() {
                   transition={{ delay: i * 0.05 }}
                 >
                   <Link
-                    to={item.path}
+                    href={item.path}
                     onClick={() => setMobileMenuOpen(false)}
                     className="text-3xl font-heading font-bold tracking-tight text-foreground"
                   >

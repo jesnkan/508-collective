@@ -1,9 +1,11 @@
+'use client';
+
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 
 export default function About() {
   const containerRef = useRef<HTMLDivElement>(null);
-  
+
   // For the horizontal scroll effect within this section
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -21,7 +23,7 @@ export default function About() {
       </div>
 
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 relative z-10">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -36,20 +38,20 @@ export default function About() {
         <div className="mt-24 md:mt-40 relative">
           {/* Decorative lines */}
           <div className="absolute top-0 left-0 w-full h-[1px] bg-foreground/10"></div>
-          
+
           <div className="py-12 md:py-20 overflow-hidden">
-            <motion.div style={{ x: x1 }} className="flex gap-4 md:gap-8 whitespace-nowrap opacity-20">
+            <motion.div style={{ x: x1 }} className="flex gap-4 md:gap-8 whitespace-nowrap opacity-20 will-change-transform">
               <span className="text-[60px] md:text-[150px] font-heading font-bold uppercase tracking-tighter text-transparent" style={{ WebkitTextStroke: '1px var(--foreground)' }}>
                 Retail • Media • Agriculture • Lifestyle • Commerce •
               </span>
             </motion.div>
-            <motion.div style={{ x: x2 }} className="flex gap-4 md:gap-8 whitespace-nowrap opacity-20 -mt-8 md:-mt-16">
+            <motion.div style={{ x: x2 }} className="flex gap-4 md:gap-8 whitespace-nowrap opacity-20 -mt-8 md:-mt-16 will-change-transform">
               <span className="text-[60px] md:text-[150px] font-heading font-bold uppercase tracking-tighter text-transparent" style={{ WebkitTextStroke: '1px var(--foreground)' }}>
                 Innovation • Vision • Growth • Future • Trust •
               </span>
             </motion.div>
           </div>
-          
+
           <div className="absolute bottom-0 left-0 w-full h-[1px] bg-foreground/10"></div>
         </div>
       </div>
