@@ -21,7 +21,7 @@ interface Product {
   _id: string;
   name: string;
   category: string;
-  price: string;
+  price?: string;
   unit: string;
   description: string;
   image: string;
@@ -61,9 +61,6 @@ function ProductCard({ product, index, onAddToCart }: { product: Product, index:
               {product.tag}
             </span>
             <div className="flex flex-col items-end gap-2">
-              <span className="px-3 py-1.5 rounded-full bg-primary text-white text-[10px] font-bold tracking-widest shadow-lg uppercase">
-                {product.price}
-              </span>
               <span className="px-3 py-1 rounded-full bg-background/50 backdrop-blur-md text-[8px] font-bold tracking-widest border border-foreground/5 uppercase">
                 {product.unit}
               </span>
