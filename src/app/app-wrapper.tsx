@@ -13,7 +13,7 @@ export default function AppWrapper({ children }: { children: React.ReactNode }) 
     // Premium loading delay
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1200);
+    }, 3000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -24,7 +24,7 @@ export default function AppWrapper({ children }: { children: React.ReactNode }) 
       </AnimatePresence>
       
       <div 
-        className={`transition-opacity duration-700 ease-in-out ${loading ? 'opacity-0' : 'opacity-100'}`}
+        className={`transition-opacity duration-1000 ease-in-out ${loading ? 'opacity-0' : 'opacity-100'}`}
       >
         <Navigation />
         <main className="flex-1">

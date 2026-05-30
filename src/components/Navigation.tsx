@@ -2,12 +2,14 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import { Sun, Moon, Menu, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 export default function Navigation() {
+  const pathname = usePathname();
   const { scrollY } = useScroll();
   const [mounted, setMounted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -26,7 +28,7 @@ export default function Navigation() {
     { name: 'PORTFOLIO', path: '/portfolio' },
     { name: 'ABOUT', path: '/about' },
     { name: 'DEPOT', path: '/depot' },
-    { name: 'VISION', path: '/#vision' },
+    { name: 'VISION', path: '/vision' },
     { name: 'CONNECT', path: '/connect' },
   ];
 
@@ -38,12 +40,12 @@ export default function Navigation() {
             y: headerY,
             scale,
           }}
-          className="pointer-events-auto flex items-center bg-background/70 backdrop-blur-xl md:backdrop-blur-2xl border border-foreground/10 rounded-full shadow-2xl px-4 md:px-8 py-2 w-fit max-w-[95vw] gap-8 md:gap-24"
+          className="pointer-events-auto flex items-center bg-background/70 backdrop-blur-xl md:backdrop-blur-2xl border border-foreground/10 rounded-full shadow-2xl px-4 md:px-6 py-1.5 w-fit max-w-[95vw] gap-6 md:gap-12"
         >
           {/* Logo Section - Significantly Pushed Left */}
           <Link
             href="/"
-            className="flex items-center justify-center hover:scale-110 transition-transform shrink-0 relative h-11 md:h-14 w-32 md:w-40"
+            className="flex items-center justify-center hover:scale-110 transition-transform shrink-0 relative h-9 md:h-11 w-24 md:w-32"
           >
             {mounted ? (
               <Image
@@ -59,16 +61,23 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Nav - Centered with large breathing room */}
-          <nav className="hidden md:flex items-center gap-4">
-            {navLinks.map((item) => (
-              <Link
-                key={item.name}
-                href={item.path}
-                className="text-[10px] font-bold text-foreground/50 uppercase tracking-[0.2em] px-4 py-2 rounded-full hover:text-foreground hover:bg-foreground/5 transition-all"
-              >
-                {item.name}
-              </Link>
-            ))}
+          <nav className="hidden md:flex items-center gap-2">
+            {navLinks.map((item) => {
+              const isActive = pathname === item.path || (pathname.startsWith(item.path) && item.path !== '/' && !item.path.includes('#'));
+              return (
+                <Link
+                  key={item.name}
+                  href={item.path}
+                  className={`text-xs font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full transition-all ${
+                    isActive 
+                      ? 'bg-foreground text-background shadow-md' 
+                      : 'text-foreground/50 hover:text-foreground hover:bg-foreground/5'
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Right Actions - Significantly Pushed Right */}
@@ -112,22 +121,27 @@ export default function Navigation() {
             </button>
 
             <nav className="flex flex-col gap-6 text-center">
-              {navLinks.map((item, i) => (
-                <motion.div
-                  key={item.name}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                >
-                  <Link
-                    href={item.path}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="text-3xl font-heading font-bold tracking-tight text-foreground"
+              {navLinks.map((item, i) => {
+                const isActive = pathname === item.path || (pathname.startsWith(item.path) && item.path !== '/' && !item.path.includes('#'));
+                return (
+                  <motion.div
+                    key={item.name}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.05 }}
                   >
-                    {item.name}
-                  </Link>
-                </motion.div>
-              ))}
+                    <Link
+                      href={item.path}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={`text-3xl font-heading font-bold tracking-tight transition-colors ${
+                        isActive ? 'text-[#0096FF]' : 'text-foreground'
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  </motion.div>
+                );
+              })}
             </nav>
           </motion.div>
         )}

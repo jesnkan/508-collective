@@ -1,11 +1,18 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 
 export default function Contact() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <section id="contact" className="bg-background text-foreground py-20 md:py-32 rounded-t-[40px] md:rounded-t-[60px] relative z-40 overflow-hidden mt-[-40px] md:mt-[-60px]">
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-multiply dark:mix-blend-overlay pointer-events-none"></div>
+      <div className="absolute inset-0 bg-foreground/5 opacity-[0.03] pointer-events-none"></div>
 
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24">
@@ -70,16 +77,18 @@ export default function Contact() {
                  <p className="text-foreground font-heading text-xl md:text-2xl tracking-tight mb-4 drop-shadow-md">Visit Headquarters</p>
                  <a href="https://maps.google.com/?q=508+Print+Media,+Adenta,+GH" target="_blank" rel="noopener noreferrer" className="uppercase tracking-widest text-[10px] md:text-xs border-b border-primary text-primary pb-1 pointer-events-auto">Get Directions</a>
               </div>
-              <iframe
-                src="https://maps.google.com/maps?q=508+Print+Media,+Adenta,+GH&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen={false}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="absolute inset-0 w-full h-full filter grayscale contrast-125 opacity-70 group-hover:filter-none group-hover:opacity-100 transition-all duration-700"
-              ></iframe>
+              {isMounted && (
+                <iframe
+                  src="https://maps.google.com/maps?q=508+Print+Media,+Adenta,+GH&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={false}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="absolute inset-0 w-full h-full filter grayscale contrast-125 opacity-70 group-hover:filter-none group-hover:opacity-100 transition-all duration-700"
+                ></iframe>
+              )}
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">

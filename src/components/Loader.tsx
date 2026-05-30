@@ -13,7 +13,7 @@ export default function Loader({ isLoading }: { isLoading: boolean }) {
       const contentTimer = setTimeout(() => setShowContent(true), 1000);
 
       const startTime = Date.now();
-      const duration = 1000;
+      const duration = 2800;
 
       const updateProgress = () => {
         const elapsed = Date.now() - startTime;
@@ -60,8 +60,8 @@ export default function Loader({ isLoading }: { isLoading: boolean }) {
                 transition={{ duration: 0.6 }}
                 className="w-full flex flex-col items-center justify-center h-full relative"
               >
-                {/* Subtle noise */}
-                <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+                {/* Subtle noise alternative */}
+                <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-black"></div>
 
                 <div className="relative flex flex-col items-center justify-center w-full max-w-md px-6 z-10 w-64">
 

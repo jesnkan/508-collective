@@ -60,36 +60,36 @@ function Card({ business, index }: { business: typeof BUSINESSES[0], index: numb
     offset: ['start end', 'end start']
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ['15%', '-15%']);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
+  // Very slight parallax translation to avoid heavy GPU load
+  const y = useTransform(scrollYProgress, [0, 1], ['5%', '-5%']);
 
   return (
     <motion.div
       ref={cardRef}
-      style={{ scale }}
-      className={`relative w-full min-h-[50vh] md:min-h-[80vh] rounded-[24px] md:rounded-[40px] overflow-hidden group mb-8 md:mb-24 md:sticky md:top-24 shadow-[0_0_80px_rgba(0,0,0,0.5)] border border-foreground/10 ${index % 2 === 0 ? 'lg:w-[85%]' : 'lg:w-[85%] lg:ml-auto'}`}
+      className={`relative w-full min-h-[50vh] md:min-h-[80vh] rounded-[24px] md:rounded-[40px] overflow-hidden group mb-8 md:mb-24 md:sticky md:top-24 border border-foreground/10 ${index % 2 === 0 ? 'lg:w-[85%]' : 'lg:w-[85%] lg:ml-auto'} will-change-transform`}
     >
       <Link href={business.path} className="absolute inset-0 block z-0">
-        {/* Background Image with Parallax */}
+        {/* Background Image with slight Parallax */}
         <motion.div style={{ y }} className="absolute inset-[-10%] w-[120%] h-[120%] bg-black">
-          <div className="absolute inset-0 bg-black/60 md:bg-black/50 group-hover:bg-black/20 transition-colors duration-700 z-10"></div>
+          <div className="absolute inset-0 bg-black/50 md:bg-black/40 group-hover:bg-black/20 transition-colors duration-700 z-10"></div>
           <Image 
             src={business.image} 
             alt={business.name} 
             fill
-            className="object-cover opacity-80 group-hover:opacity-100 transition-all duration-1000"
+            className="object-cover opacity-90 group-hover:opacity-100 transition-all duration-1000"
             sizes="(max-width: 768px) 100vw, 85vw"
             priority={index < 2}
           />
         </motion.div>
 
-        {/* Glow/Gradient overlay based on brand color */}
+        {/* Flat Color Overlay (Replaces expensive mix-blend-mode) */}
         <div
-          className="absolute inset-0 z-20 opacity-40 group-hover:opacity-80 transition-opacity duration-700 mix-blend-overlay"
+          className="absolute inset-0 z-20 opacity-30 group-hover:opacity-60 transition-opacity duration-700"
           style={{ background: `linear-gradient(to bottom right, ${business.color}, transparent)` }}
         ></div>
 
         <div className="absolute inset-0 z-30 p-8 md:p-24 flex flex-col justify-between">
+
           <div className="flex justify-between items-start">
             <span className="text-white font-mono text-[10px] md:text-sm tracking-widest border border-white/20 rounded-full px-3 py-1 bg-black/40 backdrop-blur-md">
               0{index + 1}

@@ -37,7 +37,14 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body>
         <ThemeProvider defaultTheme="dark" storageKey="508-theme" attribute="class">
-          <ReactLenis root options={{ smoothWheel: true, touchMultiplier: 2, infinite: false }}>
+          <ReactLenis root options={{ 
+            lerp: 0.12, 
+            duration: 0.8, 
+            smoothWheel: true, 
+            syncTouch: true,
+            wheelMultiplier: 1.1,
+            touchMultiplier: 1.5
+          }}>
             <ScrollToTop />
             <AppWrapper>
               {children}

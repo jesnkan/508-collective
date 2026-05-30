@@ -1,143 +1,278 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { ShoppingBag, ArrowRight, Search, SlidersHorizontal, ChevronDown, Plus, Loader2 } from 'lucide-react';
+import { Caveat } from 'next/font/google';
+import { INITIAL_PRODUCTS } from '@/lib/data';
 
-const products = [
-  {
-    id: 'prod-1',
-    name: '508 Roasted Corn & Groundnuts Mix',
-    category: 'Groceries',
-    description: 'A perfect crunch. Hand-roasted golden corn masterfully blended with premium groundnuts for a savory, satisfying crunch.',
-    image: '/product-corn-mix.jpeg',
-    tag: 'Originally Homemade'
-  },
-  {
-    id: 'prod-2',
-    name: '508 Organic Gari',
-    category: 'Groceries',
-    description: 'Pure, organically sourced Ghanaian cassava, finely grated and roasted to perfection. The authentic taste of tradition.',
-    image: '/product-gari.jpeg',
-    tag: '100% Organic'
-  },
-  {
-    id: 'prod-3',
-    name: '508 Shito Dedeede',
-    category: 'Groceries',
-    description: 'Our signature rich, spicy black pepper sauce. Lovingly crafted with premium ingredients for that irresistible heat.',
-    image: '/product-shito.jpeg',
-    tag: 'Authentic'
-  }
+const caveat = Caveat({ subsets: ['latin'], weight: '400' });
+
+const categories = [
+  { name: 'All Products', image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=200' },
+  { name: 'Groceries', image: '/product-corn-mix.jpeg' },
+  { name: 'Farm Produce', image: '/farmproduce/harvested-peppers.jpeg' },
+  { name: 'Commodities', image: '/farmproduce/rubber-production.jpeg' }
 ];
 
-const categories = ['All Products', 'Groceries'];
+interface Product {
+  _id: string;
+  name: string;
+  category: string;
+  price: string;
+  unit: string;
+  description: string;
+  image: string;
+  tag: string;
+  featured: boolean;
+}
 
-export default function DepotClient() {
-  const [activeTab, setActiveTab] = useState('All Products');
-  const [cartCount, setCartCount] = useState(0);
-
-  const filteredProducts = activeTab === 'All Products' 
-    ? products 
-    : products.filter(p => p.category === activeTab);
+function ProductCard({ product, index, onAddToCart }: { product: Product, index: number, onAddToCart: () => void }) {
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className="bg-background text-foreground min-h-screen font-sans selection:bg-[#0096FF]/30 pt-24 md:pt-32">
-      {/* Header */}
-      <section className="px-6 md:px-12 max-w-[1600px] mx-auto mb-8 md:mb-12">
-        <div className="border-b border-foreground/10 pb-6 md:pb-8 flex justify-between items-end">
-          <div>
-            <p className="uppercase tracking-[0.2em] font-mono text-[10px] md:text-xs font-semibold mb-2 text-[#0096FF]">508 / Commerce</p>
-            <h1 className="text-4xl md:text-7xl font-heading font-bold uppercase tracking-tighter block leading-none">
-              Depot <span className="opacity-50">Store</span>
-            </h1>
+    <motion.div
+      layout
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: index * 0.05 }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="relative flex flex-col"
+    >
+      <div className={`relative overflow-hidden bg-white dark:bg-foreground/[0.02] border border-foreground/5 rounded-[40px] transition-all duration-700 h-full flex flex-col ${isHovered ? 'shadow-2xl -translate-y-2 border-primary/20' : ''}`}>
+        
+        {/* Image Container */}
+        <div className="relative w-full aspect-[4/5] overflow-hidden bg-foreground/5">
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            className={`object-cover transition-transform duration-1000 ease-out ${isHovered ? 'scale-110' : 'scale-100'}`}
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+          
+          {/* Top Tags */}
+          <div className="absolute top-6 left-6 right-6 flex justify-between items-start z-20">
+            <span className="px-3 py-1.5 rounded-full bg-background/90 backdrop-blur-xl text-[9px] font-bold tracking-widest border border-foreground/10 uppercase">
+              {product.tag}
+            </span>
+            <div className="flex flex-col items-end gap-2">
+              <span className="px-3 py-1.5 rounded-full bg-primary text-white text-[10px] font-bold tracking-widest shadow-lg uppercase">
+                {product.price}
+              </span>
+              <span className="px-3 py-1 rounded-full bg-background/50 backdrop-blur-md text-[8px] font-bold tracking-widest border border-foreground/5 uppercase">
+                {product.unit}
+              </span>
+            </div>
           </div>
-          <div className="flex gap-4 md:gap-6 items-center">
-             <div className="hidden md:flex gap-6 font-mono text-sm uppercase tracking-wide mr-8">
-                {categories.map(cat => (
-                  <button 
-                    key={cat}
-                    onClick={() => setActiveTab(cat)}
-                    className={`pb-2 border-b-2 transition-all ${activeTab === cat ? 'border-[#0096FF] text-foreground' : 'border-transparent text-foreground/40 hover:text-foreground'}`}
-                  >
-                    {cat}
-                  </button>
-                ))}
-             </div>
-             <div className="relative group cursor-pointer" onClick={() => setCartCount(c => c + 1)}>
-                <div className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-foreground/10 flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-all">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg>
-                </div>
-                {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-[#0096FF] text-white text-[10px] font-bold rounded-full flex items-center justify-center">
-                    {cartCount}
-                  </span>
-                )}
-             </div>
+
+          {/* Bottom Add Button - High End Reveal */}
+          <div className="absolute bottom-6 right-6 z-20">
+            <button 
+              onClick={(e) => { e.preventDefault(); onAddToCart(); }}
+              className="w-14 h-14 rounded-full bg-foreground text-background flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 shadow-xl active:scale-90 group"
+            >
+              <Plus size={24} className="group-hover:rotate-90 transition-transform duration-300" />
+            </button>
           </div>
+        </div>
+
+        {/* Info Area */}
+        <div className="p-8 flex flex-col flex-1">
+          <div className="flex items-center gap-2 mb-3">
+             <div className="w-1 h-1 rounded-full bg-primary"></div>
+             <p className="text-primary text-[9px] font-bold uppercase tracking-[0.3em]">{product.category}</p>
+          </div>
+          <h3 className="font-heading font-bold text-foreground text-xl md:text-2xl mb-4 leading-tight group-hover:text-primary transition-colors">
+            {product.name}
+          </h3>
+          <p className="text-foreground/40 text-sm font-light leading-relaxed line-clamp-2">
+            {product.description}
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+export default function DepotClient() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState('All Products');
+  const [cartCount, setCartCount] = useState(0);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        const res = await fetch('/api/products');
+        const data = await res.json();
+        if (Array.isArray(data) && data.length > 0) {
+          setProducts(data);
+        } else {
+          // Use hardcoded data if API returns empty or error
+          console.warn('API returned empty or error, using fallback products');
+          setProducts(INITIAL_PRODUCTS);
+        }
+      } catch (error) {
+        console.error('Failed to fetch products, using fallback:', error);
+        setProducts(INITIAL_PRODUCTS);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    fetchProducts();
+  }, []);
+
+  const filteredProducts = products.filter(p => {
+    const matchesTab = activeTab === 'All Products' || p.category === activeTab;
+    const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                          p.description.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesTab && matchesSearch;
+  });
+
+  return (
+    <div className="bg-[#F8F9FA] dark:bg-background text-foreground min-h-screen font-sans selection:bg-primary/30 pt-32 pb-40 transition-colors duration-500">
+      
+      {/* Floating Cart Indicator */}
+      <div className="fixed top-32 right-6 md:right-12 z-50">
+         <motion.div 
+           initial={{ scale: 0, x: 20 }}
+           animate={{ scale: 1, x: 0 }}
+           className="relative bg-foreground text-background px-6 py-4 rounded-[24px] shadow-2xl flex items-center gap-4 border border-background/10 backdrop-blur-xl"
+         >
+            <div className="relative">
+              <ShoppingBag size={20} />
+              <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary rounded-full flex items-center justify-center text-[8px] font-bold border-2 border-foreground">{cartCount}</div>
+            </div>
+            <div className="h-4 w-[1px] bg-background/20"></div>
+            <span className="font-heading font-bold text-xs tracking-widest uppercase">Cart</span>
+         </motion.div>
+      </div>
+
+      <section className="px-6 md:px-12 max-w-[1400px] mx-auto mb-20">
+        
+        {/* Top Search & Filter Bar (Detailed from Inspo) */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-20 bg-background/50 backdrop-blur-md p-4 md:p-2 rounded-[32px] border border-foreground/5 shadow-sm">
+           <div className="relative w-full md:w-[400px] group">
+              <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-foreground/30 group-focus-within:text-primary transition-colors" size={18} />
+              <input 
+                type="text" 
+                placeholder="Search products..." 
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full bg-background border-none rounded-full py-4 pl-16 pr-6 text-sm focus:ring-2 focus:ring-primary/20 outline-none transition-all text-foreground"
+              />
+           </div>
+           
+           <div className="flex items-center gap-4 w-full md:w-auto">
+              <button className="flex-1 md:flex-none flex items-center justify-center gap-3 px-8 py-4 bg-background border border-foreground/5 rounded-full text-xs font-bold uppercase tracking-widest hover:border-primary/30 transition-all">
+                <SlidersHorizontal size={14} />
+                Filter
+              </button>
+              <button className="flex-1 md:flex-none flex items-center justify-center gap-3 px-8 py-4 bg-background border border-foreground/5 rounded-full text-xs font-bold uppercase tracking-widest hover:border-primary/30 transition-all">
+                Sort By
+                <ChevronDown size={14} />
+              </button>
+           </div>
+        </div>
+
+        <div className="text-center mb-16">
+           <motion.span 
+             initial={{ opacity: 0 }}
+             whileInView={{ opacity: 1 }}
+             className={`text-3xl md:text-4xl text-primary ${caveat.className} block mb-4`}
+           >
+             Our Collections
+           </motion.span>
+           <h1 className="text-5xl md:text-7xl font-heading font-black tracking-tighter uppercase mb-16 leading-[0.85]">
+             The <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent italic font-light">Depot</span>.
+           </h1>
+           
+           {/* Graphical Category Representations (Exactly like Inspo) */}
+           <div className="flex flex-wrap justify-center gap-8 md:gap-16">
+             {categories.map((cat, i) => (
+               <motion.button
+                 key={cat.name}
+                 initial={{ opacity: 0, scale: 0.8 }}
+                 whileInView={{ opacity: 1, scale: 1 }}
+                 viewport={{ once: true }}
+                 transition={{ delay: i * 0.1, type: "spring", stiffness: 100 }}
+                 onClick={() => setActiveTab(cat.name)}
+                 className="group flex flex-col items-center gap-6"
+               >
+                 <div className={`relative w-24 h-24 md:w-36 md:h-36 rounded-full overflow-hidden transition-all duration-700 border-2 ${activeTab === cat.name ? 'border-primary p-2 scale-110 shadow-[0_20px_60px_rgba(0,150,255,0.3)]' : 'border-foreground/10 group-hover:border-primary/50'}`}>
+                    <div className="relative w-full h-full rounded-full overflow-hidden">
+                      <Image 
+                        src={cat.image} 
+                        alt={cat.name} 
+                        fill 
+                        className={`object-cover transition-transform duration-1000 ${activeTab === cat.name ? 'scale-110' : 'grayscale group-hover:grayscale-0 group-hover:scale-110'}`} 
+                      />
+                    </div>
+                 </div>
+                 <div className="flex flex-col items-center gap-1">
+                   <span className={`text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] transition-colors ${activeTab === cat.name ? 'text-primary' : 'text-foreground/40 group-hover:text-foreground'}`}>
+                     {cat.name}
+                   </span>
+                   {activeTab === cat.name && (
+                     <motion.div layoutId="underline" className="w-8 h-[2px] bg-primary rounded-full"></motion.div>
+                   )}
+                 </div>
+               </motion.button>
+             ))}
+           </div>
         </div>
       </section>
 
-      {/* Product Grid */}
-      <section className="px-6 md:px-12 max-w-[1600px] mx-auto pb-32">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
+      {/* Product Grid - More dynamic and clean */}
+      <section className="px-6 md:px-12 max-w-[1400px] mx-auto mb-32">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
           <AnimatePresence mode="popLayout">
             {filteredProducts.map((product, index) => (
-              <motion.div
-                layout
-                key={product.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="group bg-foreground/[0.02] border border-foreground/5 rounded-[32px] overflow-hidden hover:border-[#0096FF]/20 transition-all duration-500 will-change-transform"
-              >
-                <div className="aspect-square relative overflow-hidden bg-white/5">
-                  <Image 
-                    src={product.image} 
-                    alt={product.name} 
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-1000"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    priority={index === 0}
-                  />
-                  <div className="absolute top-6 left-6">
-                    <span className="px-4 py-1.5 rounded-full bg-background/80 backdrop-blur-md text-[10px] font-bold uppercase tracking-widest border border-foreground/5 shadow-sm">
-                      {product.tag}
-                    </span>
-                  </div>
-                </div>
-                <div className="p-8 md:p-10">
-                  <p className="text-[#0096FF] text-[10px] font-bold uppercase tracking-widest mb-3">{product.category}</p>
-                  <h3 className="text-xl md:text-2xl font-heading font-bold mb-4 leading-tight group-hover:text-[#0096FF] transition-colors">{product.name}</h3>
-                  <p className="text-foreground/50 text-sm md:text-base font-light leading-relaxed mb-8 line-clamp-3">
-                    {product.description}
-                  </p>
-                  <button 
-                    onClick={() => setCartCount(c => c + 1)}
-                    className="w-full py-4 rounded-full border border-foreground/10 text-xs font-bold uppercase tracking-widest hover:bg-foreground hover:text-background transition-all duration-300"
-                  >
-                    Add to Cart
-                  </button>
-                </div>
-              </motion.div>
+              <ProductCard 
+                key={product._id} 
+                product={product} 
+                index={index} 
+                onAddToCart={() => setCartCount(c => c + 1)}
+              />
             ))}
           </AnimatePresence>
         </div>
       </section>
 
-      {/* Wholesale Banner */}
-      <section className="bg-foreground text-background py-20 px-6">
-        <div className="max-w-[1600px] mx-auto text-center">
-           <h2 className="text-3xl md:text-6xl font-heading font-bold uppercase tracking-tighter mb-8">Wholesale & <span className="text-[#0096FF]">Distribution</span></h2>
-           <p className="text-lg md:text-xl font-light opacity-60 max-w-2xl mx-auto mb-12">
-             Interested in stocking 508 products in your store or restaurant? We offer competitive wholesale pricing and nationwide delivery.
-           </p>
-           <a href="/#contact" className="inline-block px-10 py-5 rounded-full bg-background text-foreground font-bold uppercase tracking-widest text-xs hover:bg-[#0096FF] hover:text-white transition-all shadow-xl">
-             Inquire About Wholesale
-           </a>
+
+      {/* Wholesale & Distribution Section - High Impact */}
+      <section className="mx-6 md:mx-12 max-w-[1600px] md:mx-auto">
+        <div className="relative rounded-[40px] md:rounded-[80px] overflow-hidden bg-foreground text-background p-12 md:p-32 text-center group">
+          {/* Animated Glows */}
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/20 blur-[150px] rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-125 transition-transform duration-1000"></div>
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/20 blur-[120px] rounded-full translate-y-1/2 -translate-x-1/2 group-hover:scale-125 transition-transform duration-1000 delay-200"></div>
+          
+          <div className="relative z-10 max-w-4xl mx-auto">
+            <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] text-primary mb-8 inline-block">Global Logistics</span>
+            <h2 className="text-4xl md:text-7xl lg:text-8xl font-heading font-medium tracking-tighter mb-10 leading-none uppercase">
+               Bulk Wholesale & <br /> <span className="italic font-light opacity-50">Distribution.</span>
+            </h2>
+            <p className="text-lg md:text-2xl font-light opacity-60 mb-12 max-w-2xl mx-auto leading-relaxed">
+              Scale your business with the 508 supply chain. We offer premium wholesale pricing, industrial spec sheets, and worldwide distribution for our entire catalog.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+               <Link href="/connect" className="px-12 py-6 bg-primary text-white rounded-full font-bold uppercase tracking-widest text-xs hover:scale-105 transition-transform shadow-2xl">
+                 Inquire Now
+               </Link>
+               <button className="px-12 py-6 border border-white/20 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/10 transition-colors">
+                 Download Catalog
+               </button>
+            </div>
+          </div>
         </div>
       </section>
+
     </div>
   );
 }
