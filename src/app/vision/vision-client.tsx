@@ -1,13 +1,13 @@
 'use client';
 
-import { motion, useScroll, useTransform, useInView, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView, useSpring, Variants } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, ChevronDown, Sparkles, Target, Zap, Shield, Globe } from 'lucide-react';
 
 // Animation variants for text reveal
-const wordVariants = {
+const wordVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: (i: number) => ({
     opacity: 1,
@@ -15,7 +15,7 @@ const wordVariants = {
     transition: {
       duration: 0.5,
       delay: i * 0.05,
-      ease: [0.22, 1, 0.36, 1]
+      ease: "easeOut"
     }
   })
 };
