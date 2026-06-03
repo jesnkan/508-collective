@@ -82,7 +82,7 @@ export default function ConnectClient() {
                 </div>
                 <div>
                   <p className="text-[10px] uppercase tracking-widest font-bold text-slate-400 dark:text-foreground/40 mb-1">Call us</p>
-                  <a href="tel:+233000000000" className="text-xl font-medium text-slate-900 dark:text-foreground hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">+233 (0) 508 000 000</a>
+                  <a href="tel:+233559459452" className="text-xl font-medium text-slate-900 dark:text-foreground hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">+233 55 945 9452</a>
                 </div>
               </div>
 

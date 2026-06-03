@@ -13,7 +13,8 @@ const caveat = Caveat({ subsets: ['latin'], weight: '400' });
 const categories = [
   { name: 'All Products', image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=200' },
   { name: 'Groceries', image: '/product-corn-mix.jpeg' },
-  { name: 'Farm Produce', image: '/farmproduce/harvested-peppers.jpeg' },
+  { name: 'Vegetables', image: '/farmproduce/harvested-peppers.jpeg' },
+  { name: 'Livestock', image: '/farmproduce/live-birds.jpeg' },
   { name: 'Commodities', image: '/farmproduce/rubber-production.jpeg' }
 ];
 

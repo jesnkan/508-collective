@@ -32,17 +32,17 @@ export const INITIAL_PRODUCTS = [
     {
       _id: '4',
       name: 'Fresh Green Bell Peppers',
-      category: 'Farm Produce',
+      category: 'Vegetables',
       unit: '1kg',
       description: 'Crisp, organically grown green bell peppers. Harvested at peak ripeness from Success Farmhouse fields.',
-      image: '/farmproduce/green-peppers.jpeg',
+      image: '/farmproduce/harvested-peppers.jpeg',
       tag: 'FARM FRESH',
       featured: true
     },
     {
       _id: '5',
       name: 'Fiery Habanero Peppers',
-      category: 'Farm Produce',
+      category: 'Vegetables',
       unit: 'Bowl',
       description: 'Vibrant, incredibly spicy habanero peppers. Hand-picked and perfect for adding serious heat and flavor.',
       image: '/farmproduce/habanero-peppers.jpeg',
@@ -52,7 +52,7 @@ export const INITIAL_PRODUCTS = [
     {
       _id: '6',
       name: 'Vine-Ripened Tomatoes',
-      category: 'Farm Produce',
+      category: 'Vegetables',
       unit: 'Box',
       description: 'Juicy, deep red tomatoes grown without harmful pesticides. Perfect for fresh salads or rich sauces.',
       image: '/farmproduce/tomatoes.jpeg',
@@ -62,7 +62,7 @@ export const INITIAL_PRODUCTS = [
     {
       _id: '7',
       name: 'Dried Red Chilies (Bulk)',
-      category: 'Farm Produce',
+      category: 'Vegetables',
       unit: '5kg+',
       description: 'Sun-dried red chilies offering intense heat and long shelf life. Ideal for wholesale spices and culinary use.',
       image: '/farmproduce/red-chilies-basket.jpeg',
@@ -72,7 +72,7 @@ export const INITIAL_PRODUCTS = [
     {
       _id: '8',
       name: 'Farm Fresh Poultry',
-      category: 'Farm Produce',
+      category: 'Livestock',
       unit: 'Live Bird',
       description: 'Healthy, well-fed birds raised with the highest standards of animal welfare at Success Farmhouse.',
       image: '/farmproduce/live-birds.jpeg',
@@ -82,10 +82,10 @@ export const INITIAL_PRODUCTS = [
     {
       _id: '9',
       name: 'Premium Farm Eggs',
-      category: 'Farm Produce',
+      category: 'Livestock',
       unit: 'Crate',
       description: 'Rich, nutritious, and gathered daily. Our farm-fresh eggs guarantee the best quality for your family or bakery.',
-      image: '/farmproduce/farm-eggs.jpeg',
+      image: '/eggs.jpeg',
       tag: 'DAILY',
       featured: false
     },

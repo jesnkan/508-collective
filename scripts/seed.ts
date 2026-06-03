@@ -63,17 +63,17 @@ const products = [
     },
     {
       name: 'Fresh Green Bell Peppers',
-      category: 'Farm Produce',
+      category: 'Vegetables',
       price: 'GHS 30.00',
       unit: '1kg',
       description: 'Crisp, organically grown green bell peppers. Harvested at peak ripeness from Success Farmhouse fields.',
-      image: '/farmproduce/green-peppers.jpeg',
+      image: '/farmproduce/harvested-peppers.jpeg',
       tag: 'FARM FRESH',
       featured: true
     },
     {
       name: 'Fiery Habanero Peppers',
-      category: 'Farm Produce',
+      category: 'Vegetables',
       price: 'GHS 20.00',
       unit: 'Bowl',
       description: 'Vibrant, incredibly spicy habanero peppers. Hand-picked and perfect for adding serious heat and flavor.',
@@ -83,7 +83,7 @@ const products = [
     },
     {
       name: 'Vine-Ripened Tomatoes',
-      category: 'Farm Produce',
+      category: 'Vegetables',
       price: 'GHS 40.00',
       unit: 'Box',
       description: 'Juicy, deep red tomatoes grown without harmful pesticides. Perfect for fresh salads or rich sauces.',
@@ -93,7 +93,7 @@ const products = [
     },
     {
       name: 'Dried Red Chilies (Bulk)',
-      category: 'Farm Produce',
+      category: 'Vegetables',
       price: 'INQUIRE',
       unit: '5kg+',
       description: 'Sun-dried red chilies offering intense heat and long shelf life. Ideal for wholesale spices and culinary use.',
@@ -103,7 +103,7 @@ const products = [
     },
     {
       name: 'Farm Fresh Poultry',
-      category: 'Farm Produce',
+      category: 'Livestock',
       price: 'GHS 85.00',
       unit: 'Live Bird',
       description: 'Healthy, well-fed birds raised with the highest standards of animal welfare at Success Farmhouse.',
@@ -113,11 +113,11 @@ const products = [
     },
     {
       name: 'Premium Farm Eggs',
-      category: 'Farm Produce',
+      category: 'Livestock',
       price: 'GHS 75.00',
       unit: 'Crate',
       description: 'Rich, nutritious, and gathered daily. Our farm-fresh eggs guarantee the best quality for your family or bakery.',
-      image: '/farmproduce/farm-eggs.jpeg',
+      image: '/eggs.jpeg',
       tag: 'DAILY',
       featured: false
     },

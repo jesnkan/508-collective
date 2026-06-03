@@ -107,13 +107,18 @@ export default function PrintMediaClient() {
 
       <section className="py-20 md:py-32 px-6 md:px-12 text-center max-w-[800px] mx-auto">
         <h2 className="text-3xl md:text-5xl font-heading tracking-tight mb-8 md:mb-12">Ready to start printing?</h2>
-        <Link 
-          href="/#contact"
-          className="inline-block px-8 py-4 md:px-10 md:py-5 rounded-full text-white font-semibold uppercase tracking-wider text-xs md:text-sm hover:scale-105 transition-transform duration-300 shadow-[0_10px_40px_rgba(0,150,255,0.4)] w-full md:w-auto"
-          style={{ backgroundColor: brandColor }}
-        >
-          Contact Print Media
-        </Link>
+        <div className="flex flex-col items-center gap-6">
+          <Link 
+            href="mailto:printmedia508@gmail.com"
+            className="inline-block px-8 py-4 md:px-10 md:py-5 rounded-full text-white font-semibold uppercase tracking-wider text-xs md:text-sm hover:scale-105 transition-transform duration-300 shadow-[0_10px_40px_rgba(0,150,255,0.4)] w-full md:w-auto"
+            style={{ backgroundColor: brandColor }}
+          >
+            Email Print Media
+          </Link>
+          <p className="text-foreground/40 text-sm font-medium tracking-widest uppercase">
+            printmedia508@gmail.com
+          </p>
+        </div>
       </section>
     </div>
   );

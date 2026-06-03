@@ -182,7 +182,8 @@ export default function FarmhouseClient() {
             >
               {[
                 '/farmproduce/tomatoes.jpeg',
-                '/farmproduce/green-peppers.jpeg',
+                '/farmproduce/harvested-peppers.jpeg',
+
                 '/farmproduce/cauliflower.jpeg',
                 '/farmproduce/habanero-peppers.jpeg',
                 '/farmproduce/cucumber-vines.jpeg',
@@ -193,7 +194,7 @@ export default function FarmhouseClient() {
                 <div key={index} className="relative w-[280px] h-[350px] md:w-[400px] md:h-[500px] rounded-[24px] md:rounded-[40px] overflow-hidden flex-shrink-0 border border-foreground/5 shadow-2xl">
                   <Image 
                     src={src} 
-                    alt={`Farm Produce Gallery ${index}`} 
+                    alt={`Farm Harvest Gallery ${index}`} 
                     fill 
                     className="object-cover filter grayscale hover:grayscale-0 transition-all duration-700 hover:scale-110" 
                     sizes="(max-width: 768px) 280px, 400px"
