@@ -131,7 +131,26 @@ export default function FarmhouseClient() {
             </div>
           </div>
 
-          {/* Card 3: Rubber Plantation (Spans larger on desktop) */}
+          {/* Card 3: Tubers & Specialty Harvest */}
+          <div className="group relative h-[400px] md:h-[500px] rounded-[32px] overflow-hidden bg-foreground/5 p-8 flex flex-col justify-end">
+            <Image 
+              src="/farmproduce/chayote-cocoyam.jpeg" 
+              fill 
+              alt="Tubers & Specialty Harvest" 
+              className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000 z-0" 
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-10"></div>
+            <div className="relative z-20 text-white">
+              <span className="px-3 py-1 bg-[#10B981]/20 text-[#10B981] border border-[#10B981]/50 backdrop-blur-md rounded-full text-[10px] font-bold uppercase tracking-widest mb-4 inline-block">Export Standard</span>
+              <h3 className="text-3xl font-heading font-bold mb-2">Tubers & Specialties</h3>
+              <p className="text-white/70 text-sm mb-6 leading-relaxed">Export-ready cocoyam, crisp chayote, and luscious hand-harvested blackberries.</p>
+              <Link href="/depot" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider hover:text-[#10B981] transition-colors">
+                Buy at Depot Store →
+              </Link>
+            </div>
+          </div>
+
+          {/* Card 4: Rubber Plantation (Spans larger on desktop) */}
           <div className="group relative h-[400px] md:h-[500px] lg:col-span-3 rounded-[32px] overflow-hidden bg-foreground/5 p-8 md:p-12 flex flex-col justify-end md:justify-center border border-foreground/10">
             <Image 
               src="/farmproduce/rubber-production.jpeg" 
@@ -160,11 +179,94 @@ export default function FarmhouseClient() {
         </div>
       </section>
 
+      {/* NEW SECTION: Global Trade & International Export */}
+      <section className="py-24 md:py-32 px-6 md:px-12 max-w-[1400px] mx-auto border-t border-foreground/10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div className="lg:col-span-5">
+            <div className="inline-block px-4 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] font-semibold text-[10px] md:text-xs tracking-widest uppercase mb-6">
+              Global Presence • Export Quality
+            </div>
+            <h2 className="text-3xl md:text-5xl font-heading font-medium text-foreground mb-6 leading-tight">
+              Export Ghana, <br />
+              <span className="text-[#10B981] italic">Export More.</span>
+            </h2>
+            <p className="text-base md:text-lg text-foreground/70 font-light leading-relaxed mb-8">
+              Success Farmhouse proudly showcases Ghanaian agricultural leadership on the world stage. Representing clean farming at international agricultural expos and export pavilions, we connect sustainable local harvest with European and worldwide markets.
+            </p>
+            <div className="space-y-4 border-l-2 border-[#10B981] pl-6 mb-8">
+              <div>
+                <h4 className="text-sm font-bold uppercase tracking-wider text-foreground">Clean Farming, Clean Future</h4>
+                <p className="text-xs text-foreground/60 font-light mt-1">Certified sustainable cultivation adhering to strict international phytosanitary and export standards.</p>
+              </div>
+              <div>
+                <h4 className="text-sm font-bold uppercase tracking-wider text-foreground">International Trade Presence</h4>
+                <p className="text-xs text-foreground/60 font-light mt-1">Actively participating in major global trade fairs and export missions to supply premium produce globally.</p>
+              </div>
+            </div>
+            <Link 
+              href="/#contact" 
+              className="inline-flex items-center gap-3 px-8 py-4 bg-[#10B981] text-white rounded-full text-xs font-bold uppercase tracking-widest hover:bg-[#0c9668] transition-colors shadow-lg shadow-[#10B981]/20"
+            >
+              Export & Trade Inquiries →
+            </Link>
+          </div>
+
+          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="relative h-[320px] sm:h-[450px] rounded-[32px] overflow-hidden shadow-2xl group border border-foreground/10">
+              <Image 
+                src="/farmproduce/ghana-export-pavilion.jpeg" 
+                alt="International Agricultural Expo Hall" 
+                fill 
+                className="object-cover group-hover:scale-105 transition-all duration-700" 
+                sizes="(max-width: 768px) 100vw, 30vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+              <div className="absolute bottom-6 left-6 right-6 text-white">
+                <span className="text-[10px] uppercase font-bold tracking-widest bg-white/20 backdrop-blur-md px-3 py-1 rounded-full inline-block mb-2">Trade Fair</span>
+                <p className="text-sm font-medium leading-snug">International Agricultural Expo & Ghana Export Pavilion</p>
+              </div>
+            </div>
+
+            <div className="space-y-6 flex flex-col justify-between">
+              <div className="relative h-[210px] rounded-[32px] overflow-hidden shadow-2xl group border border-foreground/10">
+                <Image 
+                  src="/farmproduce/ghana-expo-booth.jpeg" 
+                  alt="Ghana Pavilion Sustainable Farming Exhibition" 
+                  fill 
+                  className="object-cover group-hover:scale-105 transition-all duration-700" 
+                  sizes="(max-width: 768px) 100vw, 30vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <span className="text-[9px] uppercase font-bold tracking-widest bg-[#10B981]/60 px-2 py-0.5 rounded-full inline-block mb-1">Exhibition</span>
+                  <p className="text-xs font-medium">Sustainable Agriculture Booth</p>
+                </div>
+              </div>
+
+              <div className="relative h-[210px] rounded-[32px] overflow-hidden shadow-2xl group border border-foreground/10">
+                <Image 
+                  src="/farmproduce/fresh-blackberry.jpeg" 
+                  alt="Farm Fresh Blackberry" 
+                  fill 
+                  className="object-cover group-hover:scale-105 transition-all duration-700" 
+                  sizes="(max-width: 768px) 100vw, 30vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <span className="text-[9px] uppercase font-bold tracking-widest bg-yellow-500/60 px-2 py-0.5 rounded-full inline-block mb-1">Harvest</span>
+                  <p className="text-xs font-medium">Hand-Picked Specialty Blackberries</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* NEW SECTION: Farm Gallery Marquee */}
       <section className="py-20 md:py-32 overflow-hidden bg-foreground/[0.02]">
         <div className="text-center mb-12 md:mb-20">
            <h2 className="text-3xl md:text-5xl font-heading font-medium tracking-tight mb-4 text-foreground">Straight from the Source</h2>
-           <p className="text-foreground/60 max-w-2xl mx-auto text-base md:text-lg font-light px-6">A glimpse into the daily harvest at Success Farmhouse.</p>
+           <p className="text-foreground/60 max-w-2xl mx-auto text-base md:text-lg font-light px-6">A glimpse into the daily harvest and global reach at Success Farmhouse.</p>
         </div>
 
         <div className="relative w-full flex overflow-x-hidden">
@@ -177,17 +279,20 @@ export default function FarmhouseClient() {
               transition={{
                 repeat: Infinity,
                 ease: "linear",
-                duration: 40,
+                duration: 45,
               }}
             >
               {[
                 '/farmproduce/tomatoes.jpeg',
+                '/farmproduce/chayote-cocoyam.jpeg',
                 '/farmproduce/harvested-peppers.jpeg',
-
+                '/farmproduce/fresh-blackberry.jpeg',
+                '/farmproduce/ghana-expo-booth.jpeg',
                 '/farmproduce/cauliflower.jpeg',
+                '/farmproduce/ghana-export-pavilion.jpeg',
                 '/farmproduce/habanero-peppers.jpeg',
                 '/farmproduce/cucumber-vines.jpeg',
-                '/farmproduce/harvested-peppers.jpeg',
+                '/farmproduce/ghana-trade-fair.jpeg',
                 '/farmproduce/red-chilies-basket.jpeg',
                 '/farmproduce/live-birds.jpeg'
               ].map((src, index) => (

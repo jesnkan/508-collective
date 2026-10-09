@@ -98,5 +98,25 @@ export const INITIAL_PRODUCTS = [
       image: '/farmproduce/rubber-production.jpeg',
       tag: 'INDUSTRIAL',
       featured: false
+    },
+    {
+      _id: '11',
+      name: 'Fresh Cocoyam & Chayote',
+      category: 'Vegetables',
+      unit: 'Box',
+      description: 'Export-grade Ghanaian cocoyam tubers and crisp, nutrient-rich chayote grown with clean sustainable practices.',
+      image: '/farmproduce/chayote-cocoyam.jpeg',
+      tag: 'EXPORT GRADE',
+      featured: true
+    },
+    {
+      _id: '12',
+      name: 'Farm-Fresh Blackberries',
+      category: 'Vegetables',
+      unit: 'Pack',
+      description: 'Hand-picked, sweet and juicy ripe blackberries cultivated with care at Success Farmhouse.',
+      image: '/farmproduce/fresh-blackberry.jpeg',
+      tag: 'ORGANIC',
+      featured: false
     }
 ];
