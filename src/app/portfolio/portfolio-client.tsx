@@ -20,7 +20,7 @@ const BUSINESSES = [
     image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2064&auto=format&fit=crop',
     // Morphing border radius values for a liquid look
     morph: ["40% 60% 70% 30% / 40% 50% 60% 70%", "60% 40% 30% 70% / 60% 30% 70% 40%", "40% 60% 70% 30% / 40% 50% 60% 70%"],
-    badge: 'EST. 2024'
+    badge: 'EST. 2015'
   },
   {
     id: 'print-media',

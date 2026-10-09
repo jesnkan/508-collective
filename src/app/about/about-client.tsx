@@ -49,9 +49,9 @@ export default function AboutClient() {
             className="lg:col-span-5 relative will-change-transform"
           >
             {/* The Floating Blue Badge */}
-            <div className="absolute -top-8 -left-8 md:-top-12 md:-left-12 w-24 h-24 md:w-32 md:h-32 bg-[#0096FF] rounded-full flex flex-col items-center justify-center text-white z-20 shadow-2xl shadow-[#0096FF]/30">
-              <span className="font-bold text-[10px] md:text-xs tracking-widest uppercase">Est.</span>
-              <span className="font-heading font-black text-lg md:text-xl">2024</span>
+            <div className="absolute -top-8 -left-8 md:-top-12 md:-left-12 w-24 h-24 md:w-32 md:h-32 bg-[#0096FF] rounded-full flex flex-col items-center justify-center text-white z-20 shadow-2xl shadow-[#0096FF]/30 text-center px-1">
+              <span className="font-bold text-[9px] md:text-[11px] tracking-widest uppercase opacity-80">Est.</span>
+              <span className="font-heading font-black text-xs md:text-sm tracking-tight leading-tight">Feb 5, 2015</span>
             </div>
 
             {/* The Image Container */}
@@ -92,7 +92,7 @@ export default function AboutClient() {
                 We recognized that many communities faced similar challenges: fragmented supply chains, limited premium experiences, and the pressure to find quality across different sectors without a unified standard of excellence.
               </p>
               <p>
-                <strong className="font-semibold text-foreground">Driven by this vision,</strong> the 508 collective was born—a unified ecosystem where innovation thrives, resources are optimized, and businesses grow together.
+                <strong className="font-semibold text-foreground">Driven by this vision,</strong> the 508 collective was born on February 5th, 2015—a unified ecosystem where innovation thrives, resources are optimized, and businesses grow together.
               </p>
             </div>
 
